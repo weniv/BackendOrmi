@@ -52,3 +52,13 @@ GitHub : 코드를 관리할 수 있는 Git 기반의 웹서비스
 
 * github
 New -> repo 이름과 설명, readme file 추가 후 create repo -> add file
+New -> repo 이름과 설명, readme file 추가 후 create repo -> '.'을 눌러서 VSC에서 추가
+
+* github page 배포는 이미지 참고해주세요.
+
+* github 명령어
+git clone repo주소 .		: 현재 폴더에 repo를 복사해 놓습니다. 최초에 한 번 실행합니다.
+git pull 			: github에서 코드를 내려받는다.
+git add . 			: 내 파일을 stage에 올려놓는다.
+git commit -m '메시지'	: '메시지'를 메시지로 새로운 버전을 만듭니다.
+git push			: 만든 버전을 GitHub에 올립니다.
