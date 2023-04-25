@@ -1,0 +1,54 @@
+외워야 할 것 and 필수 설치
+
+형식		명칭		비유 
+www.naver.com	URL, 도메인	이름
+105.209.222.141	IP		주소
+22, 23, 28, 443..	PORT		문
+
+* VSC 세팅
+https://youtu.be/Xs5aM9FYuic
+
+* 단축키
+Ctrl + N
+Ctrl + S
+
+* emmet
+h1
+h2
+h3
+h4
+h5
+h6 + tab 이 형식만 아셔도 수업하는데 지장이 있지 않습니다.
+
+* 필수 설치 익스텐션
+live server
+
+* Git 4개 명령어!
+git pull
+git add .
+git commit
+git push
+
+* Git과 GitHub
+Git : Git은 분산 버전 관리 시스템
+GitHub : 코드를 관리할 수 있는 Git 기반의 웹서비스
+
+* 확장자란 무엇인가?
+파일을 실행시킬 프로그램 명시(그 파일을 어떤 프로그램으로 열어줄지)
+
+* 클라우드 환경?
+빌려쓰는 환경
+
+* 마크다운? 마크업?
+마크다운 : 주로 설명을 위한 문서
+마크다운(.md)의 대제목, 중제목
+# 제목1
+## 제목2
+
+마크업 : 웹에서 사용하는 문서
+마크업(.html)의 대제목, 중제목
+<h1>제목1</h1>
+<h2>제목2</h2>
+
+* github
+New -> repo 이름과 설명, readme file 추가 후 create repo -> add file

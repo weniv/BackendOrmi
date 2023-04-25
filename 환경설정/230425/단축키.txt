@@ -1,0 +1,18 @@
+Ctrl + N : 새로운 파일
+Ctrl + S : 저장
+Ctrl + D : 같은 단어 찾기
+Ctrl + C, Ctrl + V : 마우스로 드래그 하지 않고 사용 가능
+Alt + Shift + 위아래 : 위와 같은 역활을 합니다. 훨신 빠릅니다. 다만 위에 방법이 너무 익숙해서 잘 사용이 안됩니다.
+Home, End : 해당 줄에 맨 앞으로, 해당 줄에 맨 뒤로
+Ctrl + Alt + 위아래 : 동시수정
+Ctrl + B : 사이드바
+Ctrl + / : 주석
+Ctrl + ], tab : 들여쓰기
+Ctrl + [, Shift+tab : 내어쓰기
+Shift + Del
+Ctrl + , : settings => word wrap 검색 후 off -> on으로 해주시면 code가 자동줄바꿈 됩니다.
+---
+Mac 단축키
+- Ctrl ⇒ Command
+- Alt ⇒ Option
+- Ctrl이 Control 단축키로 사용할 경우에는 Ctrl(Control)이라고 하겠습니다.
