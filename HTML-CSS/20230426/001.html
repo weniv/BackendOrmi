@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>block inline</title>
+  <style>
+    div,
+    span {
+      background: salmon;
+      border: 1px solid black;
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    div {
+      /* 기본값 */
+      /* display: block; */
+      display: inline-block;
+    }
+
+    span {
+      background-color: royalblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div>div</div>
+  <div>div</div>
+  <div>div<span>span</span></div>
+  <span>span</span><span>span</span><span>span</span>
+
+  <!-- 오류 -->
+  <span>
+    <div>내용</div>
+  </span>
+  <!--// 오류 -->
+
+  <!-- 오류아님 -->
+  <a href="#">
+    <div>내용</div>
+  </a>
+  <!--// 오류아님 -->
+</body>
+
+</html>
