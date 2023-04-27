@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 상속</title>
+  <style>
+    /* h1,
+    h2,
+    p {
+      color: red
+    } */
+    div {
+      color: red;
+      border: 5px solid royalblue;
+    }
+
+    h1,
+    h2,
+    p {
+      border: inherit;
+    }
+
+    /* 앞에 천줄 적혀 */
+    p {
+      border: initial;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>Hello</h1>
+    <h2>Hello</h2>
+    <p>Hello</p>
+    <button type="button">Hello</button>
+  </div>
+</body>
+
+</html>

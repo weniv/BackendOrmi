@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>boxmodel</title>
+  <style>
+    body,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: royalblue;
+      /* padding: 10px; */
+      padding-top: 10px;
+      padding-right: 20px;
+      padding-bottom: 30px;
+      padding-left: 40px;
+      padding: 10px 20px 30px 40px;
+      /* margin: 10px 20px 30px 800px; */
+      margin: 100px 0 100px auto;
+    }
+
+    ul {
+      background: skyblue;
+      padding: 20px;
+    }
+
+    ul li {
+      list-style: none;
+      width: 100px;
+      height: 100px;
+      background: royalblue;
+      border: 5px solid #ddd;
+
+      /* border-width: 5px;
+      border-style: solid;
+      border-color: #ddd; */
+      /* border-top: 5px solid #ddd; */
+
+      /* border-width: 20px 10px 5px 10px; */
+      /* margin: 20px; */
+      box-sizing: border-box;
+      border-radius: 50% 50% 0 0;
+    }
+
+    li:first-child {
+      margin-bottom: 50px;
+    }
+
+    .bg {
+      background: url(./img/est.jpg);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    div
+  </div>
+  <ul>
+    <li>A</li>
+    <li>B</li>
+  </ul>
+
+</body>
+
+</html>

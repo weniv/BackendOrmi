@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>table</title>
+</head>
+
+<body>
+  <table>
+    <caption>내용설명</caption>
+    <colgroup>
+      <col>
+      <col width="200" style="background-color: yellow;">
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>구분</th>
+        <th colspan="2">제목/작성자</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th rowspan="2">제목</th>
+        <td>공지사항입니다</td>
+        <td>홍길동</td>
+      </tr>
+      <tr>
+        <td colspan="2">공지사항입니다</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+
+</html>
