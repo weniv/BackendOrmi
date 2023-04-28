@@ -1,8 +1,52 @@
 body,
 h1,
-p {
+p,
+fieldset,
+ul {
+  padding: 0;
   margin: 0;
 }
+/* layout */
+body {
+  min-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main {
+  flex-grow: 1;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 80px;
+  border-bottom: 1px solid #ddd;
+}
+.header h1 a {
+  text-decoration: none;
+  color: black;
+}
+.header-click a,
+.header-click button {
+  padding: 10px 15px;
+  margin-left: 10px;
+  color: black;
+  text-decoration: none;
+}
+.header-click button {
+  font: inherit;
+  border: 0;
+  background: none;
+}
+.footer {
+  background: #eee;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* 로그인 */
 .container {
   width: 360px;
   margin: 40px auto;
@@ -24,7 +68,8 @@ form > div {
   width: 70px;
 }
 [type="text"],
-[type="password"] {
+[type="password"],
+[type="email"] {
   width: 290px;
   height: 32px;
   border: 1px solid #ccc;
@@ -46,4 +91,18 @@ form > div {
 .submit-button:active {
   border: 0;
   margin-top: 23px;
+}
+
+.field {
+  border: 0;
+}
+.field ul {
+  list-style: none;
+  /* 2. flex */
+  display: flex;
+  flex-wrap: wrap;
+}
+.field ul li {
+  /* 1.가로배치 */
+  /* display: inline-block; */
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex</title>
+    <style>
+      .container {
+        height: 800px;
+        background-color: skyblue;
+        display: flex;
+        gap: 40px;
+      }
+
+      .container div {
+        flex-grow: 1;
+
+        border: 3px solid black;
+      }
+      .container div:nth-child(1) {
+        /* width: 500px; */
+        align-self: flex-start;
+
+        background-color: royalblue;
+      }
+      .container div:nth-child(2) {
+        background-color: salmon;
+        align-self: flex-end;
+      }
+      .container div:nth-child(3) {
+        background-color: gold;
+        align-self: center;
+      }
+      .container div:nth-child(4) {
+        background-color: sandybrown;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>A</div>
+      <div>B</div>
+      <div>C</div>
+      <div>D</div>
+      <!-- <div>A</div>
+      <div>B</div>
+      <div>C</div>
+      <div>D</div>
+      <div>A</div>
+      <div>B</div>
+      <div>C</div>
+      <div>D</div> -->
+    </div>
+  </body>
+</html>
