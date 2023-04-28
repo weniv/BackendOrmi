@@ -1,5 +1,6 @@
 body,
 h1,
+h2,
 p,
 fieldset,
 ul {
@@ -19,7 +20,11 @@ body {
 }
 .main {
   flex-grow: 1;
+  width: 1000px;
+  margin: auto;
 }
+
+/* header */
 .header {
   display: flex;
   align-items: center;
@@ -169,4 +174,35 @@ form > div {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+/* main 내부 컨텐츠 */
+.main-title {
+  margin: 60px 0 10px 0;
+}
+.main-desc {
+  margin-bottom: 20px;
+}
+.main-desc strong {
+  color: royalblue;
+}
+.btn-group {
+  margin-top: 20px;
+  text-align: right;
+}
+.btn {
+  background-color: #eee;
+  width: 80px;
+  height: 32px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  /* 1번 방법 */
+  /* 
+  display: inline-block;
+  text-align: center;
+  line-height: 32px; */
+  /* 2번째 방법 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
