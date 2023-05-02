@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/login-join.css">
+</head>
+
+<body>
+  <!-- header -->
+  <div class="header">
+    <h1><a href="index.html">HTML/CSS 실습</a></h1>
+    <div class="header-click">
+      <a href="chat.html">채팅</a>
+      <a href="login.html">로그인</a>
+      <a href="join.html">회원가입</a>
+      <button type="button">로그아웃</button>
+    </div>
+  </div>
+  <!-- // header -->
+
+  <div class="main">
+    <div class="container">
+      <h2 class="title">회원가입</h2>
+      <p class="description">
+        원활한 서비스를 이용을 위해 회원가입을 해주세요
+      </p>
+
+      <form class="login">
+        <div>
+          <label class="label-width" for="user-id">아이디</label>
+          <input type="text" id="user-id" name="userId" required>
+        </div>
+        <div>
+          <label class="label-width" for="user-email">이메일</label>
+          <input type="email" id="user-email" name="userEmail" required>
+        </div>
+        <div>
+          <label class="label-width" for="user-pw">비밀번호</label>
+          <input type="password" id="user-pw" name="userPw" required>
+        </div>
+        <div>
+          <label class="label-width" for="user-nick">닉네임</label>
+          <input type="text" id="user-nick" name="userNick" required>
+        </div>
+        <fieldset class="field">
+          <legend>성별</legend>
+          <ul>
+            <li>
+              <input name="gender" type="radio" id="gender1">
+              <label for="gender1">남성</label>
+            </li>
+            <li>
+              <input name="gender" type="radio" id="gender2">
+              <label for="gender2">여성</label>
+            </li>
+            <li>
+              <input name="gender" type="radio" id="gender3">
+              <label for="gender3">선택 안함</label>
+            </li>
+          </ul>
+        </fieldset>
+        <fieldset class="field">
+          <legend>사용 기술</legend>
+          <ul>
+            <li>
+              <input name="html" type="checkbox" id="tech1">
+              <label for="tech1">HTML</label>
+            </li>
+            <li>
+              <input name="css" type="checkbox" id="tech2">
+              <label for="tech2">CSS</label>
+            </li>
+            <li>
+              <input name="js" type="checkbox" id="tech3">
+              <label for="tech3">JavaScript</label>
+            </li>
+            <li>
+              <input name="python" type="checkbox" id="tech4">
+              <label for="tech4">Python</label>
+            </li>
+            <li>
+              <input name="django" type="checkbox" id="tech5">
+              <label for="tech5">Django</label>
+            </li>
+            <li>
+              <input name="github" type="checkbox" id="tech6">
+              <label for="tech6">GitHub</label>
+            </li>
+            <li>
+              <input name="sql" type="checkbox" id="tech7">
+              <label for="tech7">PostgreSQL</label>
+            </li>
+          </ul>
+        </fieldset>
+
+        <button class="submit-button" type="submit">회원가입</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <p class="footer">Copyright 2023. Chilli All rights reserved.</p>
+  <!-- //footer -->
+</body>
+
+</html>

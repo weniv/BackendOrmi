@@ -1,0 +1,36 @@
+/* 글 조회 페이지 */
+.view {
+	border-top: 2px solid black;
+	border-bottom: 1px solid #ddd;
+}
+
+.view-header {
+	background: #f5f5f5;
+	padding: 20px 30px;
+}
+
+.view-info {
+	display: flex;
+	align-items: center;
+	margin-top: 16px;
+	gap: 10px;
+	color: #ccc;
+}
+.view-info p {
+	color: black;
+}
+
+.view-content {
+	padding: 40px;
+	line-height: 1.6;
+}
+.view-content ul,
+.view-content ol {
+	padding: 0;
+	list-style-position: inside;
+}
+
+.view-content a {
+	color: royalblue;
+	text-decoration: underline;
+}

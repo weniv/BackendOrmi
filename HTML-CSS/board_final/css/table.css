@@ -1,0 +1,36 @@
+/* table */
+.table {
+	/* cell 사이 간격 삭제 */
+	border-spacing: 0;
+	/* 테두리 중첩 */
+	border-collapse: collapse;
+	table-layout: fixed;
+	border-top: 2px solid black;
+	border-bottom: 1px solid #ddd;
+	width: 1000px;
+	margin: auto;
+}
+
+.table th {
+	background-color: #eee;
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+}
+.table td {
+	padding: 10px;
+	border-top: 1px solid #ddd;
+}
+.table td.nodata {
+	padding: 40px 0;
+}
+
+.table a {
+	display: block;
+	text-align: left;
+	padding: 8px 0;
+	font-weight: bold;
+	/* 말줄임 처리 */
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

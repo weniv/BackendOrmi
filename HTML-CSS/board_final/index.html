@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판</title>
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/table.css">
+  <link rel="stylesheet" href="./css/list.css">
+</head>
+
+<body>
+  <!-- header -->
+  <div class="header">
+    <h1><a href="index.html">HTML/CSS 실습</a></h1>
+    <div class="header-click">
+      <a href="chat.html">채팅</a>
+      <a href="login.html">로그인</a>
+      <a href="join.html">회원가입</a>
+      <button type="button">로그아웃</button>
+    </div>
+  </div>
+  <!-- // header -->
+
+  <div class="main">
+    <h2 class="main-title">게시판</h2>
+
+    <div class="board-top">
+      <p class="main-desc"><strong>2개</strong>의 게시글이 있습니다.</p>
+
+      <div>
+        <label for="category" class="a11y-hidden">카테고리</label>
+        <select id="category">
+          <option>전체</option>
+          <option>공지사항</option>
+          <option>일반</option>
+        </select>
+        <form class="search-form">
+          <label for="search" class="a11y-hidden">검색</label>
+          <input id="search" type="search" placeholder="검색어를 입력해주세요">
+          <button type="submit">
+            <img src="./img/icon-search.png" alt="검색">
+          </button>
+        </form>
+
+        <label for="sort" class="a11y-hidden">정렬</label>
+        <select id="sort">
+          <option>조회순</option>
+          <option>최신순</option>
+        </select>
+      </div>
+    </div>
+
+
+    <!-- 게시판 리스트 -->
+    <table class="table list">
+      <colgroup>
+        <col style="width: 40px">
+        <col style="width: 60px">
+        <col>
+        <col style="width: 100px">
+        <col style="width: 120px">
+        <col style="width: 100px">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" id="all-article">
+            <!-- <label for="all-article">페이지 전체 게시글 선택</label> -->
+          </th>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>작성일</th>
+          <th>조회수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 게시글이 없을때 / 검색한 게시글이 없을때 -->
+        <!-- <tr>
+            <td class="nodata" colspan="5">등록된 게시물이 없습니다.</td>
+          </tr> -->
+        <!-- 게시글이 있을때 -->
+        <tr>
+          <td>
+            <input type="checkbox" id="check2">
+            <!-- <label for="check1">2번 게시글</label> -->
+          </td>
+          <td>2</td>
+          <td>
+            <a href="#">위니브에서 수강생분들에게 알려드립니다. 위니브에서
+              수강생분들에게 알려드립니다. 위니브에서 수강생분들에게
+              알려드립니다.위니브에서 수강생분들에게 알려드립니다.
+            </a>
+          </td>
+          <td>홍길동</td>
+          <td>2023.04.25</td>
+          <td>999</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" id="check1">
+            <!-- <label for="check1">2번 게시글</label> -->
+          </td>
+          <td>1</td>
+          <td>
+            <a href="view.html">이스트소프트 백엔드 개발 오르미 1기 모집</a>
+          </td>
+          <td>홍길동</td>
+          <td>2023.04.24</td>
+          <td>999</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- //게시판 리스트 -->
+
+
+    <div class="board-bottom">
+      <!-- 페이지 -->
+      <div class="pagination">
+        <a href="#"><img src="./img/first.png" alt="첫번째 페이지"></a>
+        <a href="#"><img src="./img/prev.png" alt="이전 페이지"></a>
+        <a href="#" class="num active">1</a>
+        <a href="#" class="num">2</a>
+        <a href="#" class="num">3</a>
+        <a href="#" class="num">4</a>
+        <a href="#" class="num">5</a>
+        <a href="#"><img src="./img/next.png" alt="첫번째 페이지"></a>
+        <a href="#"><img src="./img/last.png" alt="이전 페이지"></a>
+      </div>
+      <!-- //페이지 -->
+      <div class="btn-group">
+        <button class="btn">선택삭제</button>
+        <a href="./write.html" class="btn">글쓰기</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <p class="footer">Copyright 2023. Chilli All rights reserved.</p>
+  <!-- //footer -->
+</body>
+
+</html>

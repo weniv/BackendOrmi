@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글쓰기</title>
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/table.css">
+  <link rel="stylesheet" href="./css/write.css">
+
+</head>
+
+<body>
+  <!-- header -->
+  <div class="header">
+    <h1><a href="index.html">HTML/CSS 실습</a></h1>
+    <div class="header-click">
+      <a href="chat.html">채팅</a>
+      <a href="login.html">로그인</a>
+      <a href="join.html">회원가입</a>
+      <button type="button">로그아웃</button>
+    </div>
+  </div>
+  <!-- // header -->
+
+  <div class="main">
+    <!-- 글쓰기 페이지 -->
+    <h2 class="main-title">글쓰기</h2>
+    <p class="main-desc">내용을 입력 해주세요.</p>
+
+    <form>
+      <table class="table write">
+        <colgroup>
+          <col style="width: 120px">
+          <col>
+        </colgroup>
+        <tbody>
+          <tr>
+            <th><label for="category">카테고리</label></th>
+            <td>
+              <select id="category">
+                <option value="1">일반</option>
+                <option value="2">공지사항</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th><label for="board-title">제목</label></th>
+            <td><input type="text" id="board-title" name="boardTitle"></td>
+          </tr>
+          <tr>
+            <th><label for="board-content">내용</label></th>
+            <td>
+              <textarea id="board-content"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th><label for="board-file">파일첨부</label></th>
+            <td>
+              <input type="file" id="board-file">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btn-group">
+        <a href="./index.html" class="btn">목록</a>
+        <button type="reset" class="btn">초기화</button>
+        <button type="submit" class="btn">작성</button>
+      </div>
+    </form>
+
+    <!--  //글쓰기 페이지 -->
+  </div>
+
+  <!-- footer -->
+  <p class="footer">Copyright 2023. Chilli All rights reserved.</p>
+  <!-- //footer -->
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+/* 공통 스타일 */
+
+/* 초기화 ------------------------------------ */
+body,
+h1,
+h2,
+p,
+fieldset,
+ul {
+	padding: 0;
+	margin: 0;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+input,
+textarea,
+select {
+	box-sizing: border-box;
+}
+
+select:enabled,
+button:enabled {
+	cursor: pointer;
+}
+
+/* layout --------------------------------- */
+body {
+	min-width: 1000px;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.main {
+	flex-grow: 1;
+	width: 1000px;
+	margin: auto;
+}
+
+/* header */
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
+	height: 80px;
+	border-bottom: 1px solid #ddd;
+}
+.header h1 a {
+	color: black;
+}
+.header-click a,
+.header-click button {
+	padding: 10px 15px;
+	margin-left: 10px;
+	color: black;
+	text-decoration: none;
+}
+.header-click button {
+	font: inherit;
+	border: 0;
+	background: none;
+}
+
+/* footer */
+.footer {
+	background: #eee;
+	text-align: center;
+	padding: 20px 0;
+	margin-top: 80px;
+}
+
+/* input --------------------------------- */
+[type="text"],
+[type="password"],
+[type="email"] {
+	width: 290px;
+	height: 32px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 0 8px;
+}
+[type="text"]:read-only {
+	background-color: #ccc;
+}
+
+/* main 내부 컨텐츠 --------------------------------- */
+.main-title {
+	margin: 60px 0 10px 0;
+}
+.main-desc {
+	margin-bottom: 20px;
+}
+.main-desc strong {
+	color: royalblue;
+}
+
+/* 버튼 */
+.btn-group {
+	margin-top: 20px;
+	text-align: right;
+}
+.btn {
+	background-color: #eee;
+	width: 80px;
+	height: 32px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	font: inherit;
+}
+
+/* 텍스트 숨김처리를 위한 CSS */
+.a11y-hidden {
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+}

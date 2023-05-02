@@ -1,0 +1,99 @@
+.list.table {
+	text-align: center;
+}
+
+/* 게신판 목록 상단 */
+.board-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.board-top .main-desc {
+	margin-bottom: 0;
+}
+.board-top > div {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.board-top label {
+	font-size: 14px;
+}
+.board-top select {
+	height: 32px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	min-width: 80px;
+	padding: 0 4px;
+}
+/* 검색 */
+.search-form {
+	height: 32px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+}
+
+.search-form input[type="search"],
+.search-form button {
+	border: 0;
+	height: 100%;
+}
+.search-form input[type="search"] {
+	padding: 0 6px;
+}
+.search-form button {
+	background: #eee;
+}
+.search-form button img {
+	height: 70%;
+}
+
+/* 게시판 목록 하단 */
+.board-bottom {
+	margin-top: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.board-bottom .pagination {
+	justify-self: center;
+}
+.board-bottom .btn-group {
+	margin-top: 0;
+}
+
+/* pagination */
+.pagination {
+	text-align: center;
+	display: flex;
+	gap: 4px;
+}
+
+.pagination a {
+	width: 32px;
+	height: 32px;
+	border: 1px solid #ddd;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: top;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+.pagination a img {
+	width: 70%;
+}
+.pagination a.num {
+	background: #eee;
+}
+.pagination a.num.active {
+	background-color: royalblue;
+	border-color: royalblue;
+	color: #fff;
+	font-weight: bold;
+}
