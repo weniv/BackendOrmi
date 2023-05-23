@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string</title>
+</head>
+<body>
+    <script>
+        // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String
+        let txt = 'hello world!';
+        let test; // undefined
+
+        txt + txt
+        txt[0]
+        // txt[-1] // 안됩니다. undefined
+        // txt[2:5] // 안됩니다.
+
+        txt.indexOf('o')
+        txt.search('o')
+
+        // 없는 값도 -1
+        txt.indexOf('z')
+        txt.search('z')
+
+        // search는 정규표현식이 가능합니다.
+        let regExp = /[ea]llo/
+        txt.search(regExp)
+
+        // slice(시작인덱스, 종료인덱스) : 시작인덱스부터 종료인덱스-1까지 반환합니다.
+        txt.slice(1, 5) // 슬라이싱
+        txt.slice(1)
+        // txt.slice(3, 1) // 작동하지 않습니다.
+
+        // substring(시작인덱스, 종료인덱스) : 시작인덱스부터 종료인덱스-1까지 반환합니다.
+        txt.substring(1, 3)
+        txt.substring(3, 1) // 작동합니다.
+
+        // replace(바꿀문자열, 바뀔문자열)
+        txt.replace('world', 'jeju')
+        // python과 달리 정규표현식이 replace안에서 가능합니다!
+        let txt2 = 'paullab CEO leehojun! hello world hello world'
+        txt2.replace('world', 'jeju')
+        txt2.replace(/world/g, 'jeju')
+        txt2.replace('world', 'jeju')
+
+        // 있지만 사용하긴 어렵다.
+        // 저는 그냥 사용합니다.
+        txt2.replaceAll('world', 'jeju')
+
+        txt2.toUpperCase()
+        txt2.toLowerCase()
+
+        // split (정규표현식 가능합니다.)
+        txt2.split(' ')
+        '010-5044-2903'.split('-')
+
+        // trim(Python에 strip과 같은 역활)
+        '         a b c         '.trim()
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>변수의 타입</h1>
+    <script>
+        // python : int, float, str, bool, list, tuple, dict, set, None
+        // javascript : Number(int, float), String(str), Boolean(bool), Array(list), Object(dict), Set(set), Map(dict)
+        console.log(typeof(10));
+        console.log(typeof(10.1));
+        console.log(typeof('hello'));
+        console.log(typeof(true));
+        console.log(typeof([1, 2, 3])); // object // javascript가 어려운 이유
+        console.log(typeof({'one':1, 'two':2})); // object 
+        console.log(typeof(new Set('hello'))); // object 
+        console.log(typeof(new Map())); // object 
+        console.log(typeof(function (){})); // function
+        console.log(typeof(/정규표현식/g)); // object
+
+        ////////////////////////
+
+        // error를 최소화 하는 쪽으로 설계가 되어 있습니다!
+        console.log(10 + '10') // 앞에 것을 형변환해서 1010으로 만드는 것일까?
+        console.log('10' + 10) // +에서 형태가 다를 경우 문자열로 형변환을 하는 것인가?
+        console.log('10' + true)
+        console.log(true + '10')
+        // javascript는 예외가 너무 많아서 이런 식으로 
+        // 어떤 규칙을 만들어 이럴거야라는 식으로 외우게 되면
+        // ...
+
+        ///////////////////////
+        
+        // 형변환
+        console.log(Number('10')) // 권하지 않습니다. parseInt를 권합니다.
+        console.log(Boolean('10'))
+        !!'10' // 이 형태로 많이 사용합니다.
+        console.log(String(10)) // toString 메서드가 있으면 toString 메서드를 사용하기길 권해드립니다.
+        console.log(parseInt(10.1)) // 권합니다!
+        console.log(parseInt('10'))
+        console.log(parseFloat('10'))
+        console.log(~~10.1) // 비트연산자를 이용한 형변환, 알고리즘 풀이에서는 권하지만, 실무에서는 권하지 않습니다. 닌자코드처럼 될 수도 있습니다.
+
+    </script>
+</body>
+</html>
