@@ -1,3 +1,4 @@
+// 1번 문제
 // 1부터 100까지 더하는 예제
 // for(초깃값;조건;증감값)
 // 1번 풀이
@@ -52,6 +53,7 @@ for (const index in range) {
 s
 
 
+// 2번 문제
 // 1부터 100까지 짝수만 더하는 예제
 // 100번 반복
 let s = 0
@@ -80,6 +82,7 @@ while (i < 101) {
 }
 s
 
+// 3번 문제
 // [10, 5, 4, 7, 9, 3, 2, 5, 4, 7, 4, 2, 1]에서 5보다 작은 수만(미만인 수) 다 더해주세요.
 // 다양하게 풀어보세요. for, while, filter, map, reduce...
 let data = [10, 5, 4, 7, 9, 3, 2, 5, 4, 7, 4, 2, 1]
@@ -124,6 +127,7 @@ let s = 0
 data.forEach(v => v < 5 && (s += v))
 
 
+// 4번 문제
 // [10, '5', 4, '7', 9, '3', 2, '5', 4, '7', '4', '2', '1']에서 모든 숫자를 다 더해주세요.
 // 1. 숫자만 더합니다.
 // 2. 문자열도 숫자로 변환하여 더합니다.
@@ -183,6 +187,7 @@ data.reduce((a, c) => (c === parseFloat(c) ? a + c : a), 0);
 
 
 
+// 5번 문제
 // 모음 제거
 // https://school.programmers.co.kr/learn/courses/30/lessons/120849
 
@@ -216,6 +221,8 @@ function solution(my_string) {
 
 solution('hello')
 
+
+// 6번 문제
 // 용돈은 매년 2배씩 오릅니다.
 // 올해 받은 용돈은 10000원입니다.
 // 나이는 8살입니다.
@@ -233,6 +240,9 @@ for (let age = 8; age < 36; age++) {
 }
 result
 
+
+// 7번 문제
+// https://school.programmers.co.kr/learn/courses/30/lessons/120850
 // isNaN을 사용하면 숫자는 false가 나옵니다.
 // 문자는 true가 나옵니다.
 
