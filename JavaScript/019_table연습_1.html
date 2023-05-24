@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        table, tr, td {
+            border: solid 1px black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <td>책번호</td>
+                <td>책이름</td>
+                <td>책가격</td>
+                <td>책판매권수</td>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        // <tr>
+        //     <td>1</td>
+        //     <td>Python</td>
+        //     <td>1,000</td>
+        //     <td>100</td>
+        // </tr>
+        // <tr>
+        //     <td>2</td>
+        //     <td>JavaScript</td>
+        //     <td>2,000</td>
+        //     <td>200</td>
+        // </tr>
+        // <tr>
+        //     <td>3</td>
+        //     <td>HTML, CSS</td>
+        //     <td>3,000</td>
+        //     <td>300</td>
+        // </tr>
+        const dataTable = document.querySelector('#dataTable > tbody')
+        const tableBodyData = []
+        tableBodyData.push(`
+            <tr>
+                <td>1</td>
+                <td>Python</td>
+                <td>1,000</td>
+                <td>100</td>
+            </tr>
+        `)
+        tableBodyData.push(`
+            <tr>
+                <td>2</td>
+                <td>JavaScript</td>
+                <td>2,000</td>
+                <td>200</td>
+            </tr>
+        `)
+        tableBodyData.push(`
+            <tr>
+                <td>3</td>
+                <td>HTML, CSS</td>
+                <td>3,000</td>
+                <td>300</td>
+            </tr>
+        `)
+        
+        dataTable.innerHTML = tableBodyData.join('')
+    </script>
+</body>
+</html>

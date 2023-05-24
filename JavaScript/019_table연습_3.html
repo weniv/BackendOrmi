@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        table, tr, td {
+            border: solid 1px black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <td>책번호</td>
+                <td>책이름</td>
+                <td>책가격</td>
+                <td>책판매권수</td>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        // 이 데이터가 통신해서 가져온 데이터라고 가정합니다.
+        // 뒤에서 fetch로 배울 예정입니다!
+        let data = [
+            {
+                id: 1,
+                name: 'Python',
+                price: 1000,
+                count: 100
+            },
+            {
+                id: 2,
+                name: 'JavaScript',
+                price: 2000,
+                count: 200
+            },
+            {
+                id: 3,
+                name: 'HTML, CSS',
+                price: 3000,
+                count: 300
+            }
+        ]
+        const dataTable = document.querySelector('#dataTable > tbody')
+        const tableBodyData = []
+
+        for (const i of data) {
+            tableBodyData.push(`
+                <tr>
+                    <td>${i['id']}</td>
+                    <td>${i['name']}</td>
+                    <td>${i['price']}</td>
+                    <td>${i['count']}</td>
+                </tr>
+            `)
+        }
+        
+        dataTable.innerHTML = tableBodyData.join('')
+    </script>
+</body>
+</html>

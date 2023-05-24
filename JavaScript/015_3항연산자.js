@@ -5,10 +5,15 @@
 // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 // python에는 해당 문법이 없습니다.
 // a += 1
+// 증감연산, 단항연산
 let a = 10
 // 두개 다 1을 증가시키는 것입니다.
 a++ // (선할당 후증가)
 ++a // (선증가 후할당)
+    + '10'
+console.log('10' + 10)
+console.log(+'10' + 10)
+console.log('10' + '10' - '10')
 
 // ++의 방향 바꾸셔도 달라지지 않습니다.
 for (let i = 0; i < 10; ++i) {
