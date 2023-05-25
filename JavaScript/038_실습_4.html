@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김준균님 코드</title>
+  <style>
+    body {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .container {
+      border: 1px solid rgb(212, 212, 212);
+      border-radius: 20px;
+      width: 350px;
+      padding: 10px 0px 10px 0px;
+    }
+
+    .thumbnail {
+      width: 350px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      border: 1px solid rgb(212, 212, 212);
+      padding: 4px 10px 4px 10px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 실제로는 통신으로 받아왔다고 가정합니다. -->
+  <script src="data2.js"></script>
+  <script>
+    s = ''
+    console.log(data)
+    for (const i of data) {
+      s += `
+      <div class="container">
+        <div class="c_header">
+          <h3>${i.study_status.name}</h3>
+        </div>
+        <img class="thumbnail" src="${i.thumbnail}">
+        <div class="chips">
+          <div class="chip">${i.subject.name}</div>
+          <div class="chip">${i.difficulty.name}</div>
+        </div>
+        <h2 class="title">${i.title}</h2>
+      </div>
+  `
+      console.log(i.thumbnail)
+      console.log(i.difficulty.name)
+      console.log(i.subject.name)
+      console.log(i.title)
+      console.log(i.study_status.name)
+    }
+    document.querySelector('body').innerHTML = s;
+  </script>
+</body>
+
+</html>

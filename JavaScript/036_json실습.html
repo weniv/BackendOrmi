@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!-- 실제로는 통신으로 받아왔다고 가정합니다. -->
+    <script src="data.js"></script>
+    <script>
+        console.log(data)
+        s = ''
+        for (const i of data) {
+            // console.log(i.thumbnailImg)
+            // console.log(i.productName)
+            // console.log(i.price)
+            s += `
+            <div class="flex-item">
+                <img class="thumbnail" src="http://test.api.weniv.co.kr/${i.thumbnailImg}" alt="">
+                <h2 class="productName">${i.productName}</h2>
+                <p class="price">${i.price}</p>
+            </div>
+            `
+        }
+        document.querySelector('body').innerHTML = s;
+    </script>
+</body>
+</html>

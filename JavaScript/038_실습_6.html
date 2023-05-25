@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>유진수님 코드</title>
+    <style>
+      body {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .itemBox {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 300px;
+        height: 450px;
+        border: solid 1px gray;
+        border-radius: 10px;
+      }
+      .thumbnail {
+        width: 240px;
+      }
+      .studyStatus .diff {
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="data2.js"></script>
+    <script>
+      console.log(data);
+      let s = "";
+      for (const i of data) {
+        console.log(i.thumbnail);
+        //console.log(i.difficulty);
+        //console.log(i.title);
+        //console.log(i.study_status);
+        s += `
+        <div class="itemBox">
+            <p class="studyStatus">${i.study_status.name}</p>
+            <div class="imgBox">
+              <img class="thumbnail" src=${i.thumbnail} alt="..." />
+            </div>
+            <p class="diff">${i.difficulty.name}</p>
+            <h3 class="title">${i.title}</h3>
+          </div>
+        `;
+      }
+      document.querySelector("body").innerHTML = s;
+    </script>
+  </body>
+</html>

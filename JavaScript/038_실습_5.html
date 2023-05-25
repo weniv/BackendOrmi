@@ -1,0 +1,67 @@
+<html lang="ko">
+    <head>
+
+        <title>황봉수님 코드</title>
+        <style>
+            body {
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .entire {
+                width: 240px;
+                height: 430px;
+                border: 1px solid gray;
+                border-radius: 5%;
+            }
+            .thumbnail {
+                width: 240px;
+                height: 240px;
+            }
+            .card_under {
+                display: flex;
+            }
+            .difficulty1 {
+                display: inline-block;
+                border: 1px solid black;
+                border-radius: 20%;
+                margin-left: 10px;
+            }
+            .difficulty2 {
+                display: inline-block;
+                border: 1px solid black;
+                border-radius: 20%;
+                margin-left: 10px;
+            }
+            .study_status {
+                padding-left: 10px;
+                color: royalblue;
+                font-weight: bold;
+            }
+            .title {
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 실제로는 통신으로 받아왔다고 가정합니다. -->
+        <script src="data2.js"></script>
+        <script>
+            s = "";
+            for (const i of data) {
+                                s += `
+                <div class ="entire">
+                    <p class="study_status">${i.study_status.name}</p>
+                    <img class="thumbnail" src="${i.thumbnail}" alt="">
+                    <div class ="card_under">
+                    <p class="difficulty1">${i.subject.name}</p>
+                    <p class="difficulty2">${i.difficulty.name}</p>
+                    </div>
+                    <h4 class="title">${i.title}</h4>
+                </div>
+                `;
+            }
+            document.querySelector("body").innerHTML = s;
+        </script>
+    </body>
+</html>

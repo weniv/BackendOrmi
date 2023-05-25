@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현우님 코드</title>
+    <style>
+        body {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .contentsBox{
+            border: 1px solid rgb(202, 201, 201);
+            border-radius: 3%;
+            width: 350px;
+            padding: 0;
+        }
+        .studyStatus {
+            padding: 10px 15px 10px 15px;
+            font-size: 22px;
+            font-weight: 600;
+            border-bottom: 1px solid rgb(202, 201, 201);
+        }
+        .imgBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 350px;
+        }
+        .thumbnail {
+            width: 100%;    
+        }
+        .description {
+            border-top: 1px solid rgb(202, 201, 201);
+            padding: 10px;
+            height: 140px;
+        }
+        .difficulty {
+            margin-top: 5px;
+            font-size: 16px;
+            display: flex;
+            width: 60px;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(90, 90, 90);
+            border-radius: 20px;
+            color: rgb(90, 90, 90);
+        }
+    </style>
+</head>
+<body>
+    <script src="data2.js"></script>
+    <script>
+        s = ''
+        for (const i of data) {
+            s += `
+            <div class="contentsBox">
+                <div class="studyStatus">${i.study_status.name}</div>
+                <div class="imgBox">
+                    <img class="thumbnail" src="${i.thumbnail}" alt="">
+                </div>
+                <div class="
+                description">
+                <p class="difficulty">${i.difficulty.name}</p>
+                <h2 class="title">${i.title}</h2></div>
+            </div>
+            `
+            document.querySelector('body').innerHTML = s;
+        }
+    </script>
+</body>
+</html>

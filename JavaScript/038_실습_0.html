@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!-- 실제로는 통신으로 받아왔다고 가정합니다. -->
+    <script src="data2.js"></script>
+    <script>
+        console.log(data)
+        for (const i of data) {
+            console.log(i.thumbnail)
+            console.log(i.difficulty)
+            console.log(i.title)
+            console.log(i.study_status)
+        }
+    </script>
+</body>
+</html>

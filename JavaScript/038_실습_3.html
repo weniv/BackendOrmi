@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>범남궁님 코드</title>
+    <style>
+      body {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .flex-item {
+        width: 350px;
+        padding: 20px;
+      }
+
+      .imgBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .thumbnail {
+        width: 340px;
+        height: 340px;
+        border-radius: 10%;
+      }
+
+      .txtBox {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .diff {
+        display: inline-block;
+      }
+
+      .status {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 실제로는 통신으로 받아왔다고 가정합니다. -->
+    <script src="data2.js"></script>
+    <script>
+      console.log(data);
+      s = "";
+      for (const i of data) {
+        s += `
+            <div class="flex-item">
+                <div class="imgBox">
+                    <img class="thumbnail" src="${i.thumbnail}" alt="">
+                </div>
+                <h2 class="className">${i.title}</h2>
+                <div class="txtBox">
+                    <h3 class="diff">${i.difficulty.name}</h3>
+                    <p class="status">${i.study_status.name}</p>
+                </div>
+            </div>
+            `;
+      }
+      document.querySelector("body").innerHTML = s;
+    </script>
+  </body>
+</html>

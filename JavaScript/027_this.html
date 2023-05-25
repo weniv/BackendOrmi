@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <button id="btn1">클릭해봐요!</button>
+        <button id="btn2">클릭해봐요!</button>
+        <script>
+            let myObj = {
+                val1: 100,
+                func1: function () {
+                    console.log(this);
+                },
+            };
+
+            let test = myObj.func1;
+
+            let button1 = document.getElementById("btn1");
+            button1.addEventListener("click", myObj.func1);
+            // 이렇기에 혼란을 가중시킵니다.
+            // 호출되는 위치에 따라 다른 값을 줍니다.
+            let button2 = document.getElementById("btn2");
+            button2.addEventListener("click", test);
+        </script>
+    </body>
+</html>
