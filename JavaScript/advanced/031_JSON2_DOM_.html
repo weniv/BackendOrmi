@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSON 실습2</title>
+        <style>
+            .container {
+                display: flex;
+                gap: 50px;
+                flex-wrap: wrap;
+            }
+            .flex-item {
+                display: flex;
+                width: 300px;
+                flex-direction: column;
+                border: 2px solid #d9dbe0;
+                border-radius: 10px;
+            }
+            .status_box {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 40px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .svg {
+                height: 20px;
+            }
+            .status {
+                display: flex;
+                align-items: center;
+                font-weight: 700;
+                font-size: 17px;
+                gap: 5px;
+            }
+            .location {
+                font-size: 12px;
+                font-weight: 550;
+                color: #626468;
+                background-color: #f3f5fa;
+                border-radius: 20px;
+
+                padding: 4px 9px 4px 9px;
+            }
+            .blue {
+                fill: #2e6ff2;
+                color: #2e6ff2;
+            }
+            .yellow {
+                fill: #ffcf56;
+                color: #ffcf56;
+            }
+            .gray {
+                fill: #8d9299;
+                color: #8d9299;
+            }
+            .imgbox {
+                position: relative;
+                height: 300px;
+                width: 300px;
+                overflow: hidden;
+                border-top: 2px solid #d9dbe0;
+                border-bottom: 2px solid #d9dbe0;
+            }
+            .thumbnail {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: translate(50, 50);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                margin: auto;
+            }
+            .heart_box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 85%;
+                left: 85%;
+                width: 25px;
+                height: 25px;
+                padding: 3px;
+                border-radius: 100%;
+                background-color: whitesmoke;
+            }
+            .heart {
+                width: 20px;
+                fill: red;
+            }
+            .tag_box {
+                height: 30px;
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                padding-left: 10px;
+            }
+            .tag {
+                font-size: 12px;
+                font-weight: 550;
+                border: 2px solid #d9dbe0;
+                border-radius: 20px;
+                margin: 0px 0px 0px 5px;
+                padding: 4px 9px 4px 9px;
+            }
+            .title_box {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .title {
+                height: 52px;
+                font-weight: 900;
+                font-size: 20px;
+                padding: 3px 15px 3px 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container"></div>
+        <script src="data2.js"></script>
+        <script>
+            s = "";
+            for (const i of data) {
+                // 이게 맞나요? 너무 복잡한거같은데...
+                // container 선택.
+                const container = document.querySelector(".container");
+                // 카드 하나 생성.
+                const box = document.createElement("div");
+                box.classList.add("flex-item");
+                // status 박스 생성.
+                const statusbox = document.createElement("div");
+                statusbox.classList.add("status_box");
+                // 모집 중과 완료의 색을 다르게 하기.
+                let color = "";
+                let text_color = "black";
+                switch (i.study_status.name) {
+                    case "모집 중":
+                        color = "blue";
+                        break;
+                    case "진행 중":
+                        color = "yellow";
+                        break;
+                    default:
+                        color = "gray";
+                        text_color = "gray";
+                }
+                // SVG 아이콘 추가
+                // status 추가
+                const status = document.createElement("span");
+                status.classList.add("status", color);
+                status.innerHTML = `<svg class="svg ${color}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9L381.7 53c-48 48-113.1 75-181 75H192 160 64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64l0 128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352l8.7 0c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.4c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7V240 371.3C357.2 317.8 280.5 288 200.7 288H192V192h8.7c79.8 0 156.5-29.8 215.3-83.3z"/></svg>`;
+                status.appendChild(
+                    document.createTextNode(i.study_status.name)
+                );
+                const location = document.createElement("span");
+                location.classList.add("location");
+                location.textContent = "온라인";
+                // 썸네일 박스 생성, 이미지태그 생성
+                const imgbox = document.createElement("div");
+                imgbox.classList.add("imgbox");
+                const thumbnail = document.createElement("img");
+                thumbnail.classList.add("thumbnail");
+                thumbnail.src = i.thumbnail;
+                const heartbox = document.createElement("div");
+                heartbox.classList.add("heart_box");
+                heartbox.innerHTML = `<svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z"/></svg>`;
+                // 태그 박스 생성, 태그들 생성
+                const tagbox = document.createElement("div");
+                tagbox.classList.add("tag_box");
+                const difficulty = document.createElement("span");
+                difficulty.classList.add("tag");
+                difficulty.textContent = i.difficulty.name;
+                const subject = document.createElement("span");
+                subject.classList.add("tag");
+                subject.textContent = i.subject.name;
+
+                // 타이틀 박스 추가
+                const titlebox = document.createElement("div");
+                titlebox.classList.add("title_box");
+                const title = document.createElement("div");
+                title.classList.add("title", text_color);
+                title.textContent = i.title;
+
+                // 추가된 요소들 위치에 맞게 자식으로 할당.
+                container.appendChild(box);
+                box.append(statusbox, imgbox, tagbox, titlebox);
+                statusbox.append(status, location);
+                titlebox.appendChild(title);
+                tagbox.append(difficulty, subject);
+                imgbox.append(thumbnail, heartbox);
+                // heartbox.append(heart);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>hello dom</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="one">hello world</h1>
+    <ul>
+        <li class="two">one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+    <button>눌럿!</button>
+    <img
+        class="terran battle-cruiser"
+        src="battle-cruiser.png"
+        data-ship-id="324"
+        data-weapons="laser"
+        data-health="400"
+        data-mana="250"
+        data-skill="yamato-cannon"
+    />
+    <script>
+        const img = document.querySelector('img')
+        console.log(img.dataset);
+        console.log(img.dataset.shipId);
+    </script>
+</body>
+</html>

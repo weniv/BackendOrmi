@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20%;
+        flex-wrap: wrap;
+        font-family: 'Gowun Dodum', sans-serif;
+      }
+      .study {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 250px;
+        border: 1px solid #dcdcdc;
+        border-radius: 10px;
+      }
+
+      .horn_icon {
+        font-size: 17px;
+        margin-right: 8px;
+      }
+
+      .statusBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 44px;
+        margin-left: 13px;
+        font-weight: bold;
+        font-size: 15px;
+      }
+
+      .status {
+        display: flex;
+        color: #4b89dc;
+      }
+
+      .finished {
+        color: #ff0044;
+      }
+
+      .studyLocation {
+        border: 1px solid #dcdcdc;
+        border-radius: 15px;
+        width: 50px;
+        height: 22px;
+        line-height: 22px;
+        text-align: center;
+        margin-right: 13px;
+        background: #f7f7f7;
+        color: #7f7f7f;
+        font-size: 11px;
+        font-weight: bold;
+      }
+
+      .difficultyBox {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        font-weight: bold;
+        margin-top: 5px;
+        margin-left: 7px;
+      }
+      .subject,
+      .difficulty {
+        width: 60px;
+        height: 20px;
+        text-align: center;
+        border: 1px solid #dcdcdc;
+        border-radius: 20px;
+        font-size: 11px;
+        line-height: 20px;
+        color: gray;
+        margin-left: 8px;
+      }
+
+      .imgBox {
+        position: relative;
+        width: 250px;
+        height: 249.5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid #dcdcdc;
+        border-bottom: 1px solid #dcdcdc;
+      }
+
+      .heartBox {
+        position: absolute;
+        border: 1px solid #e7e7e7;
+        border-radius: 50%;
+        background-color: snow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+        height: 28px;
+        bottom: 10px;
+        right: 15px;
+      }
+
+      .heart_icon {
+        width: 15px;
+        color: red;
+      }
+
+      .thumbnail {
+        width: 250px;
+      }
+
+      .titleBox {
+        height: 70px;
+        display: flex;
+        align-items: center;
+      }
+
+      .title {
+        display: flex;
+        align-items: flex-start;
+        height: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 3px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 실제로는 통신으로 받아왔다고 가정합니다. -->
+    <script src="data2.js"></script>
+    <script>
+      console.log(data);
+
+      function domTest(data) {
+        const study = document.createElement('div');
+        study.classList.add('study');
+        document.body.appendChild(study);
+
+        const statusBox = document.createElement('div');
+        statusBox.classList.add('statusBox');
+        study.appendChild(statusBox);
+
+        const status = document.createElement('div');
+        status.classList.add('status');
+        statusBox.appendChild(status);
+        const horn_icon = document.createElement('div');
+        horn_icon.innerHTML = '<i class="fa-solid fa-bullhorn horn_icon"></i>';
+        const statusName = document.createElement('span');
+        if (data.study_status.name == '완료') {
+          status.classList.add('finished');
+        }
+        statusName.classList.add('statusName');
+        statusName.textContent = data.study_status.name;
+        status.append(horn_icon, statusName);
+
+        const studyLocation = document.createElement('div');
+        studyLocation.classList.add('studyLocation');
+        studyLocation.textContent = '온라인';
+        statusBox.appendChild(studyLocation);
+
+        const imgBox = document.createElement('div');
+        imgBox.classList.add('imgBox');
+        study.appendChild(imgBox);
+        const thumbnail = document.createElement('img');
+        thumbnail.classList.add('thumbnail');
+        thumbnail.setAttribute('src', data.thumbnail);
+        imgBox.appendChild(thumbnail);
+        const heartBox = document.createElement('div');
+        heartBox.classList.add('heartBox');
+        imgBox.appendChild(heartBox);
+        const heart_icon = document.createElement('div');
+        heart_icon.innerHTML = '<i class="fa-regular fa-heart heart_icon"></i>';
+        heartBox.appendChild(heart_icon);
+
+        const difficultyBox = document.createElement('div');
+        study.appendChild(difficultyBox);
+        difficultyBox.classList.add('difficultyBox');
+        const subject = document.createElement('span');
+        subject.classList.add('subject');
+        subject.textContent = data.subject.name;
+        const difficulty = document.createElement('span');
+        difficulty.classList.add('difficulty');
+        difficulty.textContent = data.difficulty.name;
+        difficultyBox.append(subject, difficulty);
+
+        const titleBox = document.createElement('div');
+        study.appendChild(titleBox);
+        titleBox.classList.add('titleBox');
+        const title = document.createElement('h2');
+        title.classList.add('title');
+        title.textContent = data.title;
+        titleBox.appendChild(title);
+      }
+
+      for (const i of data) {
+        domTest(i);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- css -->
+    <style>
+      body {
+        font-family: "Sunflower", sans-serif;
+      }
+      .studyBoxList {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .itemBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 300px;
+        height: 470px;
+        border: solid 2px #aaa;
+        border-radius: 10px;
+      }
+      .icon {
+        width: 50px;
+      }
+      .studyBox {
+        width: 300px;
+        display: flex;
+        flex-direction: row;
+        font-size: small;
+        font-weight: 700;
+        color: dimgray;
+      }
+      .studyStatus {
+        flex-grow: 1;
+        margin: 8px 0px;
+        padding: 5px 15px;
+        border-bottom: solid 2px #aaa;
+      }
+      .thumbnail {
+        width: 280px;
+        height: 280px;
+      }
+      .category {
+        width: 300px;
+        display: flex;
+        flex-direction: row;
+        border-top: solid 2px #aaa;
+        padding: 5px 0px;
+      }
+      .diff {
+        display: inline-block;
+        margin: 0 5px;
+        padding: 5px 5px;
+        border: solid 3px #ccc;
+        border-radius: 15px;
+        font-size: small;
+        font-weight: 700;
+        color: royalblue;
+        text-align: center;
+      }
+      .subject {
+        display: inline-block;
+        margin: 0 5px;
+        padding: 5px 5px;
+        border: solid 3px #ccc;
+        border-radius: 15px;
+        font-size: small;
+        font-weight: 700;
+        color: rosybrown;
+        text-align: center;
+      }
+      .title {
+        padding: 0 5px;
+        margin: 0;
+        width: 290px;
+        height: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="data2.js"></script>
+    <script>
+      console.log(data);
+      const b = document.querySelector("body");
+      const h1 = document.createElement("h1");
+      h1.textContent = "Hello, We Are Study In!";
+
+      const h2 = document.createElement("h2");
+      h2.textContent = "스터디 둘러보기";
+
+      // 스터디 종류 담을 div 생성 studyBoxList
+      const contents = document.createElement("div");
+      contents.className = "studyBoxList";
+
+      // JSON 데이터로 스터디 작성하기
+      let tmpnode;
+      let target;
+      let itemboxnode;
+      for (const i of data) {
+        itemboxnode = document.createElement("div");
+        itemboxnode.classList.add("itemBox");
+        contents.append(itemboxnode);
+
+        tmpnode = document.createElement("div");
+        tmpnode.classList.add("studyBox");
+        itemboxnode.append(tmpnode);
+
+        tmpnode = document.createElement("div");
+        tmpnode.classList.add("imgBox");
+        itemboxnode.append(tmpnode);
+
+        tmpnode = document.createElement("div");
+        tmpnode.classList.add("category");
+        itemboxnode.append(tmpnode);
+
+        tmpnode = document.createElement("h3");
+        tmpnode.classList.add("title");
+        tmpnode.innerText = i.title;
+        itemboxnode.append(tmpnode);
+
+        tmpnode = document.createElement("p");
+        tmpnode.classList.add("studyStatus");
+        tmpnode.innerText = i.study_status.name;
+        target = itemboxnode.querySelector(".studyBox");
+        target.append(tmpnode);
+
+        switch (i.study_status.name) {
+          case "모집 중":
+            tmpnode = document.createElement("i");
+            tmpnode.classList.add("fa-solid", "fa-bullhorn", "icon");
+            tmpnode.style = "color:royalblue;";
+            target = itemboxnode.querySelector(".studyStatus");
+            target.append(tmpnode);
+            break;
+          case "완료":
+            tmpnode = document.createElement("i");
+            tmpnode.classList.add("fa-solid", "fa-ban", "icon");
+            tmpnode.style = "color:red;";
+            target = itemboxnode.querySelector(".studyStatus");
+            target.append(tmpnode);
+            break;
+        }
+
+        tmpnode = document.createElement("img");
+        tmpnode.classList.add("thumbnail");
+        tmpnode.src = i.thumbnail;
+        target = itemboxnode.querySelector(".imgBox");
+        target.append(tmpnode);
+
+        tmpnode = document.createElement("p");
+        tmpnode.classList.add("diff");
+        tmpnode.innerText = i.difficulty.name;
+        target = itemboxnode.querySelector(".category");
+        target.append(tmpnode);
+
+        tmpnode = document.createElement("p");
+        tmpnode.classList.add("subject");
+        tmpnode.innerText = i.subject.name;
+        target = itemboxnode.querySelector(".category");
+        target.append(tmpnode);
+      }
+
+      const hr = document.createElement("hr");
+      const hr2 = document.createElement("hr");
+      const hr3 = document.createElement("hr");
+
+      b.append(h1);
+      b.append(hr);
+      b.append(h2);
+      b.append(hr2);
+
+      b.append(contents);
+      b.append(hr3);
+
+      /*
+        let s = "";
+        for (const i of data) {
+            console.log(i.thumbnail);
+            //console.log(i.difficulty);
+            //console.log(i.title);
+            //console.log(i.study_status);
+            s += `
+            <div class="itemBox">
+                <div class="studyBox">
+                    <p class="studyStatus">${i.study_status.name}</p>
+                </div>
+                <div class="imgBox">
+                    <img class="thumbnail" src=${i.thumbnail} alt="..." />
+                </div>
+                <div class='category'>
+                    <p class="diff">${i.difficulty.name}</p>
+                    <p class="subject">${i.subject.name}</p>
+                </div>
+                <h3 class="title">${i.title}</h3>
+            </div>
+            `;
+        }
+
+        contents.innerHTML = s;
+        */
+    </script>
+  </body>
+</html>

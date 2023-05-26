@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 실습</title>
+</head>
+<body>
+    <script>
+        fetch('http://test.api.weniv.co.kr/mall')
+        .then(data => data.json())
+        .then(data => {
+            const body = document.querySelector('body')
+
+            function funcImgItem(thumbnailImg){
+                const imgItem = document.createElement('img')
+                imgItem.classList.add('thumbnail')
+                imgItem.setAttribute('src', `http://test.api.weniv.co.kr/${thumbnailImg}`)
+                return imgItem
+            }
+
+            function funcNameItem(productName){
+                const nameItem = document.createElement('h2')
+                nameItem.classList.add('productName')
+                nameItem.innerText = `${productName}`
+                return nameItem
+            }
+
+            function funcPriceItem(price){
+                const priceItem = document.createElement('p')
+                priceItem.classList.add('price')
+                priceItem.innerText = `${price}`
+                return priceItem
+            }
+
+
+            for (const i of data) {
+                const flexItem = document.createElement('div')
+                flexItem.classList.add('flex-item')
+
+                const imgItem = funcImgItem(i.thumbnailImg)
+                const nameItem = funcNameItem(i.productName)
+                const priceItem = funcPriceItem(i.price)
+                
+                flexItem.append(imgItem, nameItem, priceItem)
+                body.append(flexItem)
+            }
+        })
+    </script>
+</body>
+</html>

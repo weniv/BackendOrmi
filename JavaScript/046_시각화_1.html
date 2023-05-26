@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Population Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="populationChart"></canvas>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const data = [{
+                "지역이름": "서울",
+                "인구순위": 1,
+                "인구": 9411
+            }, {
+                "지역이름": "부산",
+                "인구순위": 2,
+                "인구": 3299
+            }, {
+                "지역이름": "대구",
+                "인구순위": 3,
+                "인구": 2363
+            }, {
+                "지역이름": "인천",
+                "인구순위": 4,
+                "인구": 2961
+            }, {
+                "지역이름": "광주",
+                "인구순위": 5,
+                "인구": 1463
+            }];
+
+            const labels = [];
+            const populationData = [];
+            const rankData = [];
+
+            for (let i = 0; i < data.length; i++) {
+                labels.push(data[i]["지역이름"]);
+                populationData.push(data[i]["인구"]);
+                rankData.push(data[i]["인구순위"]);
+            }
+
+            const ctx = document.getElementById("populationChart").getContext("2d");
+            const chart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "인구순위",
+                        data: rankData,
+                        backgroundColor: "rgba(75, 192, 192, 0.2)",
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderWidth: 1
+                    }, {
+                        label: "인구",
+                        data: populationData,
+                        backgroundColor: "rgba(255, 99, 132, 0.2)",
+                        borderColor: "rgba(255, 99, 132, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

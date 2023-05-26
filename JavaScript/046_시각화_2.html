@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Population Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="populationChart"></canvas>
+
+    <script>
+        fetch('https://raw.githubusercontent.com/paullabkorea/dataVisualization/main/data.json')
+        .then(data => data.json())
+        .then(data => {
+
+            const labels = [];
+            const populationData = [];
+            const rankData = [];
+
+            for (let i = 0; i < data.length; i++) {
+                labels.push(data[i]["지역이름"]);
+                populationData.push(data[i]["인구"]);
+                rankData.push(data[i]["인구순위"]);
+            }
+
+            const ctx = document.getElementById("populationChart").getContext("2d");
+            const chart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "인구순위",
+                        data: rankData,
+                        backgroundColor: "rgba(75, 192, 192, 0.2)",
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderWidth: 1
+                    }, {
+                        label: "인구",
+                        data: populationData,
+                        backgroundColor: "rgba(255, 99, 132, 0.2)",
+                        borderColor: "rgba(255, 99, 132, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            })
+        })
+        .catch(error => {
+            alert('데이터가 읽히지 않습니다.')
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body{
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .flex-item {
+            width: 300px;
+        }
+        .imgBox{
+            display: flex;
+            position: relative;
+            width: 300px;
+            height: 300px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .thumbnail {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* border-radius: 10%; */
+        }
+        .imgBox.end .thumbnail{
+            opacity: 0.1;
+        }
+        /*멘트 출력 css 
+        .imgBox.end .thumbnail::after {
+            position: absolute;
+            content: "완료된 스터디입니다 :)";
+            width: max-content;
+            color: rgb(5, 5, 5);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        } */
+        .tag_top {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+        .tag_bottom {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0px 1.3rem;
+            height: 2.6rem;
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+            border-radius: 2.6rem;
+        }
+        ul, ol, li {
+            list-style: none;
+        }
+        .bottomBox ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <script src="data2.js"></script>
+    <script>
+        console.log(data)
+        s = ''
+        on_or_off =''
+        study_or_end = ''
+
+        for (const i of data) {
+            console.log(i.thumbnail) // 썸네일
+            console.log(i.difficulty) // 난이도
+            console.log(i.title) // 제목
+            console.log(i.offline) // 수업형태 온 오프라인
+            console.log(i.study_location) // 오프라인 강의지역
+            console.log(i.recruitment) // 현재모집인원
+            console.log(i.study_status) // 모집상태
+            console.log(i.subject) // 강의속성
+
+            //온라인 오프라인 체크
+            if (i.offline == false) {
+                on_or_off = '온라인'
+            } else{
+                on_or_off = '오프라인'
+            }
+            
+            // 종료된 수업 어둡게 imcomplete
+            if (i.study_status.name == '완료') {
+                study_or_end = ' end'
+            } else{
+                study_or_end = ''
+            }
+
+            s += `
+            <div class="flex-item">
+                <div class="tag_top">
+                    <p class="study_status">${i.study_status.name}</p>
+                    <li class="offline">${on_or_off}</li>
+                </div>
+                <div class="imgBox${study_or_end}">
+                    <img class="thumbnail" src="${i.thumbnail}" alt="">
+                </div>
+                <div class="bottomBox">
+                    <ul class="tag_bottom">
+                        <li class="subject">${i.subject.name}</li>
+                        <li class="difficulty">${i.difficulty.name}</li>
+                    </ul>
+                    <h2 class="title">${i.title}</h2>
+                    <span class="recruitment">현재 ${i.recruitment}명이 참여했어요.</span>
+                </div>
+            </div>
+            `
+        }
+    document.querySelector('body').innerHTML = s;
+    </script>
+</body>
+</html>
