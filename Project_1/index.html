@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>chat</title>
-  </head>
-  <body>
+</head>
+<body>
     <div>
-      <ul></ul>
-      <form action="post">
-        <input type="text" autofocus />
-        <button type="submit">전송</button>
-      </form>
+        <ul></ul>
+        <form action="post">
+            <input type="text" autofocus />
+            <button type="submit">전송</button>
+        </form>
     </div>
     <script>
         const $form = document.querySelector("form");
@@ -38,7 +38,7 @@
 
         // input에 입력된 질문 받아오는 함수
         $input.addEventListener("input", (e) => {
-        question = e.target.value;
+            question = e.target.value;
         });
 
         // 사용자의 질문을 객체를 만들어서 push
@@ -105,5 +105,5 @@
         printQuestion();
         });
     </script>
-  </body>
+</body>
 </html>
