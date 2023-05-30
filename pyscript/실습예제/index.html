@@ -18,8 +18,21 @@
         files = ['request.py']
     </py-config>
     <style>
-        img {
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            max-width: 900px;
+            flex-wrap: wrap;
+        }
+
+        .flex-item {
+            margin: 10px;
             width: 200px;
+        }
+
+        img {
+            border-radius: 10%;
+            width: 100%;
         }
     </style>
 </head>
@@ -52,20 +65,22 @@
         def priceItem(price):
             priceItem = createEl('p')
             priceItem.classList.add('price')
-            priceItem.innerText = f'{price}'
+            priceItem.innerText = f'{format(price, ",")}원'
             return priceItem
         
         def createCard(data):
-            flexItem = createEl('div')
-            flexItem.classList.add('flex-item')
-
+            flexContainer = createEl('div')
+            flexContainer.classList.add('flex-container')
+        
             for item in data:
+                flexItem = createEl('div')
+                flexItem.classList.add('flex-item')
                 image = imgItem(item['thumbnailImg'])
                 name = nameItem(item['productName'])
                 price = priceItem(item['price'])
                 flexItem.append(image, name, price)
-
-            body.append(flexItem)
+                flexContainer.append(flexItem)
+            body.append(flexContainer)
 
 
         async def main():
