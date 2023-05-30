@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>GET</title>
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <!-- live server로 여셔야 합니다. -->
+    <py-config>
+        [[fetch]]
+        from = './py'
+        files = ['request.py']
+    </py-config>
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <py-script>
+        import asyncio
+        import json
+        from request import request
+
+        # 이런 baseurl은 별도의 file로
+        baseurl = "https://test.api.weniv.co.kr"
+        createEl = js.document.createElement
+        querySe = js.document.querySelector
+        body = querySe('body')
+        
+        def imgItem(imgUrl):
+            #print(f'{baseurl}/{imgUrl}')
+            item = createEl('img')
+            item.classList.add('thumbnail')
+            item.setAttribute('src', f'{baseurl}/{imgUrl}')
+            return item
+
+        def nameItem(name):
+            nameItem = createEl('h2')
+            nameItem.classList.add('productName')
+            nameItem.innerText = f'{name}'
+            return nameItem
+
+        def priceItem(price):
+            priceItem = createEl('p')
+            priceItem.classList.add('price')
+            priceItem.innerText = f'{price}'
+            return priceItem
+        
+        def createCard(data):
+            flexItem = createEl('div')
+            flexItem.classList.add('flex-item')
+
+            for item in data:
+                image = imgItem(item['thumbnailImg'])
+                name = nameItem(item['productName'])
+                price = priceItem(item['price'])
+                flexItem.append(image, name, price)
+
+            body.append(flexItem)
+
+
+        async def main():
+            headers = {"Content-type": "application/json"}
+            response = await request(f"{baseurl}/mall", method="GET", headers=headers)
+            # print(f"GET request=> status: {response.status}, json: {await response.json()}")
+
+            data = await response.json()
+            createCard(data)
+
+        asyncio.ensure_future(main())
+    </py-script>
+</body>
+</html>

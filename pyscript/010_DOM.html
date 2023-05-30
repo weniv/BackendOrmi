@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>pyscript tutorial</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <style>
+        table, tr, td {
+            border: solid 1px black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+    <py-script>
+        element = js.document.createElement('h1')
+        element.innerText = "Hello"
+        js.document.getElementById("output").append(element)
+
+        table = js.document.createElement('table')
+        for i in range(5):
+            tr = js.document.createElement('tr')
+            for j in range(4):
+                td = js.document.createElement('td')
+                td.innerText = f'hello {i} {j}'
+                tr.append(td)
+            table.append(tr)
+        output = Element('output')
+        output.element.append(table)
+    </py-script>
+</body>
+</html>

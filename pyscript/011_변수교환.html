@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>pyscript tutorial</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        var name = "hojun!";
+        function addTwoNumbers(x, y){
+            return x + y;
+        }
+    </script>
+    <py-script>
+        from js import name, addTwoNumbers
+
+        print(name)
+        print(addTwoNumbers(10, 20))
+    </py-script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pyscript tutorial</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <!-- lxml라는 모듈을 설치해달라고 뜬다. 그러면 추가 -->
+    <py-config>
+        packages = ["matplotlib", "pandas", "lxml"]
+    </py-config>
+</head>
+<body>
+    <h1>hello world</h1>
+    <py-script>
+        import pandas as pd
+        from pyodide.http import open_url
+
+        url = (
+            "https://paullab.co.kr/stock.html"
+        )
+        data = pd.read_html(open_url(url))
+        # print(data)
+        # print(data[0])
+        print(data[1])
+    </py-script>
+    <py-repl></py-repl>
+</body>
+</html>

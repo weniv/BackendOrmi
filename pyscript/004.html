@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 공식 홈페이지 기본 예제 -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pyscript tutorial</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <!-- config는 .toml 파일로 관리 가능합니다. -->
+    <py-config>
+        packages = ["matplotlib", "pandas"]
+    </py-config>
+</head>
+<body>
+    <h1>hello world</h1>
+    <py-script>
+        import pandas as pd
+        from pyodide.http import open_url
+        # 외부와 통신하기 위해서는 해당 'from pyodide.http import open_url'를
+        # 사용해야 합니다.
+
+        url = (
+            "https://raw.githubusercontent.com/Cheukting/pyscript-ice-cream/main/bj-products.csv"
+        )
+        ice_data = pd.read_csv(open_url(url))
+        print(ice_data)
+        for i in ice_data:
+            print(i)
+    </py-script>
+</body>
+</html>

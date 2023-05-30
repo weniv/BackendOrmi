@@ -1,0 +1,45 @@
+<html>
+<head>
+    <!-- 공식 홈페이지 기본 예제 -->
+    <title>Ice Cream Picker</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+
+    <py-config>
+        packages = ["matplotlib", "pandas"]
+    </py-config>
+
+    <py-script>
+    import pandas as pd
+    import matplotlib.pyplot as plt
+
+    from pyodide.http import open_url
+
+    url = (
+        "https://raw.githubusercontent.com/Cheukting/pyscript-ice-cream/main/bj-products.csv"
+    )
+    ice_data = pd.read_csv(open_url(url))
+
+    def plot(data):
+        plt.rcParams["figure.figsize"] = (22,20)
+        fig, ax = plt.subplots()
+        bars = ax.barh(data["name"], data["rating"], height=0.7)
+        ax.bar_label(bars)
+        plt.title("Rating of ice cream flavours of your choice")
+        display(fig, target="graph-area", append=False)
+
+    plot(ice_data)
+    </py-script>
+
+    <!-- 여기서 print를 사용하면 console창에 뜹니다. -->
+    <!-- 모두 다 지우고 py-repl만 남겨도 실행 됩니다. -->
+    <py-repl>
+        ice_data
+    </py-repl>
+
+    <div id="graph-area"></div>
+</body>
+</html>

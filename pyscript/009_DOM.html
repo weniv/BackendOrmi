@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>pyscript tutorial</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+</head>
+<body>
+    <!-- https://docs.pyscript.net/unstable/guides/event-handlers.html -->
+    <div id="test" class="one"></div>
+    <input id="test2" type="text">
+    <button id="test3">불러옵니다.</button>
+    <div id="test4"></div>
+    <py-script>
+    def functiontest(e):
+        test4 = Element('test4')
+        test4.write(test2.element.value)
+        print(e.target.id)
+
+    test = Element('test')
+    # test.write('<h2>hello</h2>')
+    test.element.innerHTML = '<h2>hello</h2>'
+    test2 = Element('test2')
+    test3 = Element('test3')
+
+    print(dir(test3.element))
+    test3.element.onclick = functiontest
+    # test2.element.onkeyup = functiontest
+    # onkeypress, onkeydown, onkeyup 등의 javascript event 가능
+    </py-script>
+</body>
+</html>

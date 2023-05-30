@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Writing to the page</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <div id="one">
+        hi
+    </div>
+    <py-script>
+        print('hello')
+        for i in [10, 20, 30]:
+            print(i)
+            js.console.log(f'{i}, 파이썬 문법이 된다!')
+        # print(dir(pyscript))
+        # pyscript.write('one', 'hello world') # pyscript에서 초기에 사용하던 메서드인데요. 이제는 사용을 권장하지 않고, 없어진다고 경고하고 있습니다.
+        # one = Element('one')
+        # one.write('test')
+        # print(type(one))
+        # print(dir(one))
+        # print(one.element)
+        # 아래와 같이 개발하면 정말 혼종이 되지만
+        # 아래와 같이 개발하면 Python생태계 + 새로운 Pyscript 문법을 익히지 않아도 됩니다.
+        one = js.document.getElementById('one')
+        one.innerHTML = 'hello world!!!!'
+    </py-script>
+</body>
+</html>
