@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <button id="btn_data">클릭해주세요!</button>
+        <div id="data"></div>
+        <script>
+            $("#btn_data").click(function () {
+                $.ajax({
+                    url: "http://test.api.weniv.co.kr/mall",
+                    async: true,
+                    dataType: "JSON",
+                    success: function (result) {
+                        // for (const i of result) {
+                        //  console.log(i);
+                        // }
+                        $("#data").text(result);
+                    },
+                });
+            });
+        </script>
+    </body>
+</html>

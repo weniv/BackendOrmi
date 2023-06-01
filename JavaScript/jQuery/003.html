@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <input name="man-news" /><br />
+        <input name="milkman" /><br />
+        <input name="letterman2" /><br />
+        <input name="newmilk" /><br />
+
+        <script>
+            $("input[name*='man']").val("has man in it!");
+        </script>
+    </body>
+</html>

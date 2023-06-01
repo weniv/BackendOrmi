@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1 class="title">TITLE</h1>
+            <ul class="items">
+                <li class="items">item 1</li>
+                <li class="items">item 2</li>
+            </ul>
+        </div>
+        <div class="class1">hello world1</div>
+        <div class="class2">hello world2</div>
+        <div class="class3">hello world3</div>
+        <div class="class4">hello world4</div>
+        <div class="class5">hello world5</div>
+        <div class="class6">hello world6</div>
+        <div class="class7">hello world7</div>
+        <div class="class8">hello world8</div>
+        <div class="class9">hello world9</div>
+        <div class="class10">hello world10</div>
+        <script>
+            // // js에서도 동일하게 할 수 있습니다.
+            // var one = document.getElementById('one');
+            // var mother = one.parentNode;
+            // // 부모 생성
+            // var mother = document.getElementById('mother');
+            // // 모든 자식 찾기
+            // var every = mother.childNodes;
+            // // 첫번째 자식 찾기
+            // var one = mother.firstChild;
+            // // 세번째 자식 찾기
+            // var three = mother.lastChild;
+            // // css에서는 부모요소를 선택할 수 없습니다.
+
+            console.log($("div").children());
+            console.log($("div").children()[0]);
+            console.log($("div").children()[1]);
+
+            console.log($("h1").parent());
+
+            // $("div").first().text("안녕하세요!");
+            // $("div").last().text("안녕하세요!");
+        </script>
+    </body>
+</html>

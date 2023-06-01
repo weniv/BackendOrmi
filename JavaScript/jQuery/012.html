@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="text">1</p>
+        <div id="divOne" class="box">2</div>
+        <p class="textTwo">3</p>
+        <h1>4</h1>
+        <script>
+            $("#text").text("hello world");
+            $("#divOne")
+                .fadeIn(1000)
+                .fadeOut(1000)
+                .fadeIn(1000)
+                .fadeOut(1000)
+                .fadeIn(1000);
+
+            // 회사 컨벤션 따라 가시면 되는데 2개 다 사용하는 경우는 없습니다.
+            // jQuery임을 명시하기 위해 앞에 $
+            // const $contDesc = $('#text')
+            // $contDesc.text('hello')
+
+            // Node임을 명시하기 위해 앞에 $
+            // const $변수 = document.querySelector('#text')
+            // $변수.innerText = 'hello'
+
+
+             // div 클릭했을 때 안 보이게 하기
+            // dom이 준비되면 실행해라!
+            $(function () {
+                $("div").click(function () {
+                    // $contDesc.hide()
+                    $(this).hide();
+                });
+            });
+
+            // 아래 방식은 예전 방식이고 요즘은 사용하지 않습니다. 있다면 수정해야 합니다. 3.x에서는 지원하지 않기 때문이에요.
+            // $(document).ready(function(){
+            //     $("div").click(function(){
+            //         $(this).hide();
+            //     });
+            // });
+        </script>
+    </body>
+</html>

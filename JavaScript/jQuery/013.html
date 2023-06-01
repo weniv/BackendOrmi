@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <button id="btn_data">클릭해주세요!</button>
+        <div id="data"></div>
+        <script>
+            // $("#btn_data").click(function () {
+            //     $("#data").load("http://test.api.weniv.co.kr/mall");
+            // });
+
+            // $("#btn_data").click(function () {
+            //     $("#data").load(
+            //         "https://raw.githubusercontent.com/paullabkorea/10000hour/main/index.html h1"
+            //     );
+            // });
+
+            $("#btn_data").click(function () {
+                $("#data").load(
+                    "https://raw.githubusercontent.com/paullabkorea/10000hour/main/index.html h1",
+                    function (responseText, statusText, xhr) {
+                        console.log(responseText);
+                        console.log(statusText);
+                        console.log(xhr);
+                        console.log(xhr.status);
+                    }
+                );
+            });
+        </script>
+    </body>
+</html>

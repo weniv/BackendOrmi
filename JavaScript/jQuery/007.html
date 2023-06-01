@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            .blue {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>hello world</h1>
+        <h1 class="blue">hello world</h1>
+        <p>hello world</p>
+        <p>hello world</p>
+        <p id="one" class="blue">hello world</p>
+        <script>
+            // 뒤에 텍스트 추가
+            $("p").append("!!");
+            // 앞에 텍스트 추가
+            $("p").prepend("!!");
+            // 해당 노드 제거
+            $("#one").remove();
+            // 있으면 빼고, 없으면 넣는다
+            $("h1,h2,p").toggleClass("blue");
+        </script>
+    </body>
+</html>

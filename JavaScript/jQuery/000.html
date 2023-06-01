@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery의 정체</title>
+</head>
+<body>
+    <h1>hello</h1>
+    <p>hello world</p>
+    <script>
+        function $(value){
+            el = document.querySelector(value)
+            return el
+        }
+        $('h1').innerText = 'hello world!!!';
+    </script>
+</body>
+</html>

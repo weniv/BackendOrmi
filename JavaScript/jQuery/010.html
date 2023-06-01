@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div>value-1</div>
+        <div>value-2</div>
+        <div class="middle">value-3</div>
+        <div class="middle">value-4</div>
+        <div class="middle">value-5</div>
+        <div class="middle">value-6</div>
+        <div class="middle">value-7</div>
+        <div class="middle">value-8</div>
+        <div>value-9</div>
+        <div>value-10</div>
+        <script>
+            $("div")
+                .css("background", "skyblue")
+                .filter(".middle")
+                .css("color", "red");
+        </script>
+    </body>
+</html>

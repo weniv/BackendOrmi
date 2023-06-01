@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>hello world 1</h1>
+    <p>hello 2</p>
+    <main>
+        <section>
+            <h2>hello 3</h2>
+            <p class="main-cont">hello 4</p>
+        </section>
+        <section>
+            <h2>hello 3</h2>
+            <p class="main-cont">hello 4</p>
+        </section>
+    </main>
+    <script>
+        // $('.main-cont').hide()
+
+        // $('h2').click(function(){
+        //     alert('hello world')
+        // })
+
+        // $('h2').css('color', 'red')
+
+        // $('h2').text('hello world!!!')
+
+        $('.main-cont').html('hello <strong>world</strong>')
+
+        $("ul").has("li").addClass("full");
+
+        
+        //#one에 입력했던 값을 two와 three에 넣는데 input창이 아닌 곳에는 val이 아니라 text로 써야 합니다.
+        $("#one").val("");
+        $("#two").val(value);
+        $("#three").text(value);
+
+        // 있으면 빼고, 없으면 넣는다
+        $("h1,h2,p").toggleClass("blue");
+
+        $("div")
+            .css("background", "skyblue")
+            .filter(".middle")
+            .css("color", "red");
+    </script>
+</body>
+</html>
