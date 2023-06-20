@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>블로그 글 작성 화면</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text">
+    </form>
+{% endblock %}
