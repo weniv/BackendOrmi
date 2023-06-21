@@ -1,14 +1,13 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h1>블로그 게시판 화면</h1>
     <p>블로그 게시판 첫 화면입니다.</p>
-    <a href="{% url 'blog:write' %}">글 작성</a>
+    <a href="{% url 'blog:write' %}" class="btn btn-outline-success">글 작성</a>
     <!-- 조건문 -->
     <!-- 글이 있을 때: 테이블 출력 -->
     {% if posts %}
-        <table>
-            <thead>
+        <table class="table table-bordered">
+            <thead class="table-light">
                 <tr>
                     <td>제목</td>
                     <td>내용</td>
@@ -18,8 +17,7 @@
             <tbody>
                 {% for post in posts %}
                     <tr>
-                        <td>{{ post.title }}</td>
-                        <td>{{ post.content }}</td>
+                        <td><a href="{% url 'blog:detail' pk=post.pk %}" class="btn">{{ post.title }}</a></td>
                         <td>{{ post.writer }}</td>
                     </tr>
                 {% endfor %}

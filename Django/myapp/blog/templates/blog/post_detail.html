@@ -1,0 +1,8 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>제목: {{ post.title }}</h2>
+<p>내용: {{ post.content }}</p>
+<p>작성자: {{ post.writer }}</p>
+<p>작성일: {{ post.created_at }}</p>
+{% endblock %}
