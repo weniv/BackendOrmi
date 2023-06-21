@@ -2,8 +2,11 @@
 
 {% block content %}
     <h1>블로그 글 작성 화면</h1>
-    <form action="" method="post">
+    <!-- 제목 -->
+    <!-- 내용 -->
+    <form action="{% url 'blog:write' %}" method="post">
         {% csrf_token %}
-        <input type="text">
+        {{ form.as_p }}
+        <input type="submit">
     </form>
 {% endblock %}
