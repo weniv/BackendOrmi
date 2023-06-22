@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy, reverse
 
 # Create your views here.
@@ -14,7 +14,7 @@ from django.urls import reverse_lazy, reverse
 #     # 에러, 예외처리
 #     return HttpResponse('No!!!')
 
-
+### Post
 class Index(View):
     def get(self, request):
         # return HttpResponse('Index page GET class')
@@ -90,3 +90,34 @@ class Update(UpdateView):
 class Delete(DeleteView):
     model = Post
     success_url = reverse_lazy('blog:list')
+
+
+class DetailView(View):
+    def get(self, request, post_id): # post_id: 데이터베이스 post_id
+        # list -> object 상세 페이지 -> 상세 페이지 하나의 내용
+        # pk 값을 왔다갔다, 하나의 인자
+        
+        # 데이터베이스 방문
+        # 해당 글
+        # 장고 ORM (pk: 무조건 pk로 작성해야한다.)
+        post = Post.objects.get(pk=post_id)
+        # 댓글
+        comments
+        pass
+
+
+### Comment
+class CommentWrite(View):
+    # def get(self, request):
+    #     pass
+    def post(self, request, post_id):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            # 사용자에게 댓글 내용을 받아옴
+            content = form.cleaned_data['content']
+            # 해당 아이디에 해당하는 글 불러옴
+            post = Post.objects.get(pk=post_id)
+            # 댓글 객체 생성, create 메서드를 사용할 때는 save 필요 없음
+            comment = Comment.objects.create(post=post, content=content)
+            return redirect('blog:detail', pk=post_id)
+            
