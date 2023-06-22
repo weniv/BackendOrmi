@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.title.label_tag }}
+    <input type="text" name="{{ form.title.name }}" value="{{ form.initial.title }}">
+    <br>
+    {{ form.content.label_tag }}
+    <textarea type="text" name="{{ form.content.name }}">{{ form.initial.content }}</textarea>
+    <br>
+    <input type="submit" value="수정 완료">
+</form>
+
+{% endblock %}

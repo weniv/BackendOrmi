@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Post
 from .forms import PostForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 # Create your views here.
 # def index(request):
@@ -43,7 +43,7 @@ def write(request):
             return redirect('blog:list')
 
     form = PostForm()
-    return render(request, 'blog/write.html', { 'form': form })
+    return render(request, 'blog/post_form.html', { 'form': form })
 
 
 # Django 자체의 클래스 뷰 기능도 강력, 편리
@@ -66,3 +66,27 @@ class Detail(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
     context_object_name = 'post'
+
+
+class Update(UpdateView):
+    model = Post
+    template_name = 'blog/post_edit.html'
+    fields = ['title', 'content']
+    # success_url = reverse_lazy('blog:list')
+    
+    # intial 기능 사용 -> form에 값을 미리 넣어주기 위해서
+    def get_initial(self):
+        initial = super().get_initial() # UpdateView(generic view)에서 제공하는 initial(딕셔너리)
+        post = self.get_object() # pk 기반으로 객체를 가져옴
+        initial['title'] = post.title
+        initial['content'] = post.content
+        return initial
+    
+    def get_success_url(self): # get_absolute_url
+        post = self.get_object() # pk 기반으로 현재 객체 가져오기
+        return reverse('blog:detail', kwargs={ 'pk': post.pk })
+
+
+class Delete(DeleteView):
+    model = Post
+    success_url = reverse_lazy('blog:list')
