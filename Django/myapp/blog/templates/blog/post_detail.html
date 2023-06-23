@@ -5,9 +5,39 @@
 <p>내용: {{ post.content }}</p>
 <p>작성자: {{ post.writer }}</p>
 <p>작성일: {{ post.created_at }}</p>
-<a href="{% url 'blog:edit' pk=post.pk %}">수정</a>
+<hr>
+
+<!-- 작성 화면 -->
+<h3>댓글</h3>
+<form action="{% url 'blog:cm-write' pk=post.pk %}" method="post">
+    {% csrf_token %}
+    {{ form.content }}
+    <input type="submit" value="댓글 작성">
+</form>
+<br>
+<!-- comments -->
+<!-- if 문 -->
+{% if comments %}
+    <!-- for 문 -->
+    <ul>
+        {% for comment in comments %}
+        <!-- 내용, 작성시간, 삭제 버튼 -->
+            <li>{{ comment.content }} / {{ comment.created_at }}
+                <form action="{% url 'blog:cm-delete' pk=comment.pk %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="X" class='btn'>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>댓글이 없습니다.</p>
+{% endif %}
+<hr>
+
+<a href="{% url 'blog:edit' pk=post.pk %}" class="btn">수정</a>
 <form action="{% url 'blog:delete' pk=post.pk %}" method="post">
     {% csrf_token %}
-    <input type="submit" value="삭제">
+    <input type="submit" value="삭제" class="btn">
 </form>
 {% endblock %}
