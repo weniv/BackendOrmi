@@ -15,7 +15,11 @@ class CommentForm(forms.ModelForm):
     
     class Meta:
         model = Comment
+<<<<<<< Updated upstream
         fields = ['content']
         widgets = {
             'content': forms.Textarea(attrs={'rows': '3', 'cols':'35'})
         }
+=======
+        fields = ['content']
+>>>>>>> Stashed changes

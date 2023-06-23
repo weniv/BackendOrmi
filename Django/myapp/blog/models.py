@@ -10,7 +10,11 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+<<<<<<< Updated upstream
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
+=======
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+>>>>>>> Stashed changes
     content = models.TextField()
     writer = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
