@@ -20,4 +20,8 @@ urlpatterns = [
     path("detail/<int:pk>/comment/write/", views.CommentWrite.as_view(), name='cm-write'),
     # 코멘트 삭제
     path("detail/comment/<int:pk>/delete/", views.CommentDelete.as_view(), name='cm-delete'),
+    # 태그 작성
+    path("detail/<int:pk>/hashtag/write/", views.HashTagWrite.as_view(), name='tag-write'),
+    # 태그 삭제
+    path("detail/<int:pk>/hashtag/delete/", views.HashTagDelete.as_view(), name='tag-delete'),
 ]
