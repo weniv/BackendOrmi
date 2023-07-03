@@ -7,7 +7,7 @@ urlpatterns = [
     # path(패턴, 매핑) /blog/
     # path("", views.index), # FBV
     # 글 목록 조회
-    path("", views.List.as_view(), name='list'), # /blog/
+    path("", views.Index.as_view(), name='list'), # /blog/
     # 글 상세 조회
     path("detail/<int:pk>/", views.DetailView.as_view(), name='detail'), # /blog/detail/1
     # 글 작성
