@@ -2,11 +2,15 @@
 
 {% block content %}
 <h2>제목: {{ post.title }}</h2>
+
+{% if post.writer == request.user %}
 <a href="{% url 'blog:edit' pk=post.pk %}" class="btn">수정</a>
 <form action="{% url 'blog:delete' pk=post.pk %}" method="post">
     {% csrf_token %}
     <input type="submit" value="삭제" class="btn">
 </form>
+{% endif %}
+
 <p>내용: {{ post.content }}</p>
 <p>작성자: {{ post.writer }}</p>
 <p>작성일: {{ post.created_at }}</p>

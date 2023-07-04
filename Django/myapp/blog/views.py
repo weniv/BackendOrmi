@@ -31,6 +31,18 @@ class Index(View):
         # print(post_objs) QuerySet<[post 1, 2, 3, 4, 5]>
         return render(request, 'blog/post_list.html', context)
 
+'''
+class Index(LoginRequiredMixin, View):
+    def get(self, request):
+        # Post - User 연결 (Foreignkey)
+        # User를 이용해서 Post를 가지고 온다.
+        posts = Post.objects.filter(writer=reuqust.user)
+        context = {
+            "posts": posts
+        }
+        return render(request, 'blog/post_list.html', context)
+'''
+
 
 # write
 # post - form
@@ -71,13 +83,13 @@ class Write(LoginRequiredMixin, View):
         }
         return render(request, 'blog/post_form.html', context)
     
-    def post(self, request):
+    def post(self, request): # request -> HttpRequest 객체
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False) # commit=False 변수 할당만 우선 하고 이후에 수정가능
             post.writer = request.user
             post.save()
-            return redirect('blog:list')
+            return redirect('blog:list') # response -> HttpResponse 객체
         form.add_error(None, '폼이 유효하지 않습니다.')
         context = {
             'form': form
@@ -85,10 +97,10 @@ class Write(LoginRequiredMixin, View):
         return render(request, 'blog/post_form.html')
 
 
-class Detail(DetailView):
-    model = Post
-    template_name = 'blog/post_detail.html'
-    context_object_name = 'post'
+# class Detail(DetailView):
+#     model = Post
+#     template_name = 'blog/post_detail.html'
+#     context_object_name = 'post'
 
 
 class Update(UpdateView):
@@ -110,9 +122,19 @@ class Update(UpdateView):
         return reverse('blog:detail', kwargs={ 'pk': post.pk })
 
 
-class Delete(DeleteView):
-    model = Post
-    success_url = reverse_lazy('blog:list')
+# class Delete(DeleteView):
+#     model = Post
+#     success_url = reverse_lazy('blog:list')
+
+
+class Delete(View):
+    def post(self, request, pk): # post_id
+        post = Post.objects.get(pk=pk)
+        post.delete()
+        return redirect('blog:list')
+    
+    # 클래스 자체에 아예 접근하지 못하게 -> LoginRequiredMixin
+    # Login이 되었을 때만 삭제 버튼이 보이게
 
 
 class DetailView(View):
