@@ -2,15 +2,13 @@
 
 {% block content %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.title.label_tag }}
-    <input type="text" name="{{ form.title.name }}" value="{{ form.initial.title }}">
-    <br>
-    {{ form.content.label_tag }}
-    <textarea type="text" name="{{ form.content.name }}">{{ form.initial.content }}</textarea>
-    <br>
-    <input type="submit" value="수정 완료">
-</form>
-
+{% if form %}
+    {% include 'blog/form_error.html' %}
+{% else %}
+    <form action="{% url 'blog:edit' pk=post.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="수정">
+    </form>
+{% endif %}
 {% endblock %}
