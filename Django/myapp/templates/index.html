@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     <h1>Index page</h1>
-    <a href="{% url 'user:register' %}">회원가입</a>
-    <a href="{% url 'user:login' %}">로그인</a>
-    <!-- <a href=""></a> -->
-</body>
-</html>
+    <a href="{% url 'user:register' %}" class="btn">회원가입</a>
+    <a href="{% url 'user:login' %}" class="btn">로그인</a>
+{% endblock %}

@@ -2,12 +2,6 @@
 
 {% block content %}
 
-<!-- form error -->
-{% if form.errors %}
-
-{% include 'blog/form_error.html' %}
-
-{% else %}
     <h2>제목: {{ post.title }}</h2>
 
     {% if post.writer == request.user %}
@@ -27,7 +21,13 @@
     <h3>댓글</h3>
     <form action="{% url 'blog:cm-write' pk=post.pk %}" method="post">
         {% csrf_token %}
-        {{ comment_form.content }}
+        {% if comment_form.errors %}
+            {% with form=comment_form %}
+                {% include 'blog/form_error.html' %}
+            {% endwith %}
+        {% else %}
+            {{ comment_form.content }}
+        {% endif %}
         <input type="submit" value="댓글 작성">
     </form>
     <br>
@@ -56,7 +56,13 @@
     <h3>해시태그</h3>
     <form action="{% url 'blog:tag-write' pk=post.pk %}" method="post">
         {% csrf_token %}
-        {{ hashtag_form.name }}
+        {% if hashtag_form.errors %}
+            {% with form=hashtag_form %}
+                {% include 'blog/form_error.html' %}
+            {% endwith %}
+        {% else %}
+            {{ hashtag_form.name }}
+        {% endif %}
         <input type="submit" value="태그 작성">
     </form>
     {% if hashtags %}
@@ -77,6 +83,6 @@
     <br>
     <p>해시태그가 없습니다.</p>
     {% endif %}
-{% endif %}
+
 
 {% endblock %}

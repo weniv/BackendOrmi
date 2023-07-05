@@ -14,11 +14,12 @@
     <div class="container">
         {% if user.is_authenticated %}
         <p>Welcome, {{ user.email }}</p>
-        <a href="{% url 'user:logout' %}">Logout</a>
+        <a href="{% url 'user:logout' %}" class="btn">Logout</a>
         {% else %}
         <p>Please, Login</p>
-        <a href="{% url 'user:login' %}">Login</a>
+        <a href="{% url 'user:login' %}" class="btn">Login</a>
         {% endif %}
+        <br><br>
         <h1>Blog</h1>
         {% block content %}
         {% endblock %}

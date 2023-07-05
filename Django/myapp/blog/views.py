@@ -78,9 +78,12 @@ class Index(LoginRequiredMixin, View):
 class Write(LoginRequiredMixin, View):
     # Mixin: LoginRequiredMixin -> 로그인되지 않은 사용자가 /login
     # login_url = '/user/login'
-    # redirect_field_name = 'next'
+    # redirect_field_name = 'next' 
     
     def get(self, request):
+        # next_path = request.GET.get('next')
+        # next_url = request.GET.get(self.redirect_field_name)
+        
         form = PostForm()
         context = {
             'form': form,
@@ -192,12 +195,12 @@ class DetailView(View):
         hashtag_form = HashTagForm()
         
         context = {
+            "title": "Blog",
             'post': post,
             'comments': comments,
             'hashtags': hashtags,
             'comment_form': comment_form,
             'hashtag_form': hashtag_form,
-            "title": "Blog"
         }
         
         return render(request, 'blog/post_detail.html', context)
@@ -222,14 +225,19 @@ class CommentWrite(View):
             # comment = Comment(post=post) -> comment.save()
             return redirect('blog:detail', pk=pk)
         
-        form.add_error('폼이 유효하지 않습니다.')
+        # form.add_error(None, '폼이 유효하지 않습니다.')
+        # errors = [error for error_list in form.errors.values() for error in error_list]
+        
         hashtag_form = HashTagForm()
         context = {
-            'comment_form': form,
+            "title": "Blog",
             'post': post,
-            "title": "Blog"
+            'comments': post.comment_set.all(),
+            'hashtags': post.hashtag_set.all(),
+            'comment_form': form,
+            'hashtag_form': hashtag_form
         }
-        return render(request, 'blog/post_detail_error.html', context)
+        return render(request, 'blog/post_detail.html', context)
 
 
 class CommentDelete(View):
@@ -248,11 +256,12 @@ class CommentDelete(View):
 class HashTagWrite(View):
     def post(self, request, pk): # post_id
         form = HashTagForm(request.POST)
+        # 해당 아이디에 해당하는 글 불러옴
+        post = Post.objects.get(pk=pk)
+        
         if form.is_valid():
             # 사용자에게 태그 내용을 받아옴
             name = form.cleaned_data['name']
-            # 해당 아이디에 해당하는 글 불러옴
-            post = Post.objects.get(pk=pk)
             # 작성자 정보 가져오기
             writer = request.user
             # 댓글 객체 생성, create 메서드를 사용할 때는 save 필요 없음
@@ -260,12 +269,18 @@ class HashTagWrite(View):
             # comment = Comment(post=post) -> comment.save()
             return redirect('blog:detail', pk=pk)
         
-        form.add_error('폼이 유효하지 않습니다.')
+        form.add_error(None, '폼이 유효하지 않습니다.')
+        comment_form = CommentForm()
+        
         context = {
-            'form': form,
-            "title": "Blog"
+            'title': 'Blog',
+            'post': post,
+            'comments': post.comment_set.all(),
+            'hashtags': post.hashtag_set.all(),
+            'comment_form': comment_form,
+            'hashtag_form': form
         }
-        return render(request, 'blog/post_detail_error.html', context)
+        return render(request, 'blog/post_detail.html', context)
 
 
 class HashTagDelete(View):

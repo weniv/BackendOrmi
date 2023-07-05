@@ -5,4 +5,7 @@ from django.urls import reverse_lazy, reverse
 
 class IndexMain(View):
     def get(self, request):
-        return render(request, 'index.html')
+        context = {
+            'title': 'Index'
+        }
+        return render(request, 'index.html', context)

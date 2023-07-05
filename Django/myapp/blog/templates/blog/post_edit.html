@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% if form %}
+{% if form.errors %}
     {% include 'blog/form_error.html' %}
 {% else %}
     <form action="{% url 'blog:edit' pk=post.pk %}" method="post">
