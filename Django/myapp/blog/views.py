@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import *
 from .models import Post, Comment, HashTag
 from .forms import PostForm, CommentForm, HashTagForm
 from django.urls import reverse_lazy, reverse
@@ -22,7 +23,7 @@ class Index(View):
         
         # 데이터베이스에 접근해서 값을 가져와야 합니다.
         # 게시판에 글들을 보여줘야하기 때문에 데이터베이스에서 "값 조회"
-        # MyModel.objects.all()
+        # MyModel.objects.all() SELECT * from post
         post_objs = Post.objects.all()
         # context = 데이터베이스에서 가져온 값
         context = {
@@ -132,7 +133,8 @@ class Write(LoginRequiredMixin, View):
 
 class Update(View):
     def get(self, request, pk): # post_id
-        post = Post.objects.get(pk=pk)
+        post = Post.objects.get(pk=pk) # <Object: post>
+        # get()은 해당 조건이 없을 때 오류를 발생시킨다.
         form = PostForm(initial={'title': post.title, 'content': post.content})
         context = {
             'form': form,
@@ -183,10 +185,13 @@ class DetailView(View):
         # 해당 글
         # 장고 ORM (pk: 무조건 pk로 작성해야한다.)
         post = Post.objects.get(pk=pk)
-        # 댓글
-        comments = Comment.objects.filter(post=post)
-        # 해시태그
-        hashtags = HashTag.objects.filter(post=post)
+        # # 댓글
+        # comments = Comment.objects.filter(post=post)
+        # # 해시태그
+        # hashtags = HashTag.objects.filter(post=post)
+        # post = Post.objects.select_related('post__comment', 'post__hashtag').get(pk=pk)
+        # comments = Comment.objects.select_related()
+        # print(post)
         
         # 댓글 Form
         comment_form = CommentForm()
@@ -217,12 +222,23 @@ class CommentWrite(View):
         
         if form.is_valid():
             # 사용자에게 댓글 내용을 받아옴
-            content = form.cleaned_data['content']    
+            content = form.cleaned_data['content']
             # 유저 정보 가져오기
             writer = request.user
             # 댓글 객체 생성, create 메서드를 사용할 때는 save 필요 없음
-            comment = Comment.objects.create(post=post, content=content, writer=writer)
-            # comment = Comment(post=post) -> comment.save()
+            try:
+                comment = Comment.objects.create(post=post, content=content, writer=writer)
+                # 생성할 값이 이미 있다면 오류 발생
+                # Unique 값이 중복될 때
+                # 필드 값이 비어있을 때
+                # 외래키 관련 데이터비이스 오류
+                # get_or_create() -> 2가지 경우의 리턴값
+                # comment, created = Comment.objects.get_or_create(post=post, content=content, writer=writer)
+                # if created: print('생성되었습니다') else: print('이미 있습니다')
+                # comment = Comment(post=post) -> comment.save()
+            except Exception as e:
+                print('Error occurred', str(e))
+            
             return redirect('blog:detail', pk=pk)
         
         # form.add_error(None, '폼이 유효하지 않습니다.')
