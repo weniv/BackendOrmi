@@ -99,7 +99,7 @@ class Write(LoginRequiredMixin, View):
             post.writer = request.user
             post.save()
             return redirect('blog:list') # response -> HttpResponse 객체
-        form.add_error(None, '폼이 유효하지 않습니다.')
+        # form.add_error(None, '폼이 유효하지 않습니다.')
         context = {
             'form': form
         }
@@ -206,20 +206,51 @@ class DetailView(View):
         # print(post)
         
         # 댓글
+        # Object.objects.select_related('(정)참조 관계를 갖는 필드명').filter(조건)
+        # comments = Comment.objects.select_related('post').filter(post__pk=pk)
+        # hashtags = HashTag.objects.select_related('post').filter(post__pk=pk)
+        
         # comments = Comment.objects.select_related('writer').filter(post=post)
-        # comments = Comment.objects.select_related('writer').filter(post__pk=pk)
-        comments = Comment.objects.select_related('post') # -> comments[0]
+        # comments = Comment.objects.select_related('writer').filter(post__pk=pk) # O
+        # comments = Comment.objects.select_related('post') # -> comments[0]
+        # comments = Comment.objects.select_related('post').filter(post_id=pk) # O
+        # comments = Comment.objects.select_related('post').filter(post__pk=pk) # O
         # comment = Comment.objects.select_related('post').first()
+        
+        # 글
+        # Object.objects.prefetch_related('역참조필드_set').get(조건)
+        post = Post.objects.prefetch_related('comment_set', 'hashtag_set').get(pk=pk)
+        
+        comments = post.comment_set.all()
+        hashtags = post.hashtag_set.all()
+        print(comments)
+        print(hashtags)
+        print(post)
+        # for post in posts:
+        #     print(post)
         # 해시태그
         # hashtags = HashTag.objects.select_related('writer').filter(post=post)
         # hashtags = HashTag.objects.select_related('writer').filter(post__pk=pk)
-        hashtags = HashTag.objects.select_related('post')
+        # hashtags = HashTag.objects.select_related('post')
         # print(comments[0].post.title)
         # for comment in comments:
         #     print(comment.post)
         # <QuerySet[]>
         # value.attr
         # print(hashtags)
+        
+        
+        # if comments:
+        #     post_title = comments[0].post.title
+        #     post_content = comments[0].post.content
+        #     post_writer = comments[0].post.writer
+        #     post_created_at = comments[0].post.created_at
+        # else:
+        # #     return False
+        #     post_title = False
+        #     post_content = False
+        #     post_writer = False
+        #     post_created_at = False
         
         # 댓글 Form
         comment_form = CommentForm()
@@ -230,14 +261,14 @@ class DetailView(View):
         context = {
             "title": "Blog",
             'post_id': pk,
-            'post_title': comments[0].post.title,
-            'post_content': comments[0].post.content,
-            'post_writer': comments[0].post.writer,
-            'post_created_at': comments[0].post.created_at,
-            'comments': comments,
-            'hashtags': hashtags,
-            'comment_form': comment_form,
-            'hashtag_form': hashtag_form,
+            # 'post_title': post.title,
+            # 'post_content': post.content,
+            # 'post_writer': post.writer,
+            # 'post_created_at': post.created_at,
+            # 'comments': comments,
+            # 'hashtags': hashtags,
+            # 'comment_form': comment_form,
+            # 'hashtag_form': hashtag_form,
         }
         
         return render(request, 'blog/post_detail.html', context)

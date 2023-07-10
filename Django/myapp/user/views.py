@@ -59,7 +59,7 @@ class Login(View):
                 login(request, user)
                 return redirect('blog:list')
             
-        form.add_error(None, '아이디가 없습니다.')
+        # form.add_error(None, '아이디가 없습니다.')
         
         context = {
             'form': form

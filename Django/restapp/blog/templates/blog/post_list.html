@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
-{% static 'blog/style.css' %}
 
 {% block content %}
-    <p class="main-title">블로그 게시판 첫 화면입니다.</p>
+    <p>블로그 게시판 첫 화면입니다.</p>
     <form action="{% url 'blog:write' %}" method="get">
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ request.GET.next }}">
         <input type="submit" value="글 작성">
