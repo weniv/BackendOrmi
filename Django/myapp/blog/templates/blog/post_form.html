@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
     <p>블로그 글 작성 화면</p>
-    <!-- 제목 -->
-    <!-- 내용 -->
     <form action="{% url 'blog:write' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="btn btn-outline-success">
+        <input type="submit" class="btn btn-outline-success" value="{% trans 'Submit' %}">
     </form>
 {% endblock %}

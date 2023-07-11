@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
+
 {% static 'blog/style.css' %}
 
 {% block content %}
+    
     <p class="main-title">블로그 게시판 첫 화면입니다.</p>
     <form action="{% url 'blog:write' %}" method="get">
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ request.GET.next }}">
         <input type="submit" value="글 작성">
     </form>
-    {# <a href="{% url 'blog:write' %}" class="btn btn-outline-success">글 작성</a> #}
-    <!-- 조건문 -->
-    <!-- 글이 있을 때: 테이블 출력 -->
+
     {% if posts %}
         <table class="table table-bordered">
             <thead class="table-light">
                 <tr>
                     <td>제목</td>
-                    <td>내용</td>
                     <td>작성자</td>
                 </tr>
             </thead>
@@ -29,7 +28,6 @@
             </tbody>
         </table>
     {% else %}
-        <!-- 글이 없을 때: 문구 출력 -->
         <p>작성된 게시물이 없습니다.</p>
     {% endif %}
  

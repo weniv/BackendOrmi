@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-10 15:32+0900\n"
+"POT-Creation-Date: 2023-07-11 18:09+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: templates/index.html:5
+#: blog/templates/blog/post_detail.html:6
+msgid "Title:"
+msgstr "제목:"
+
+#: blog/templates/blog/post_detail.html:9 blog/templates/blog/post_edit.html:13
+msgid "Edit"
+msgstr "수정"
+
+#: blog/templates/blog/post_detail.html:12
+#: venv/lib/python3.8/site-packages/django/forms/formsets.py:499
+msgid "Delete"
+msgstr "삭제"
+
+#: blog/templates/blog/post_detail.html:16
+msgid "Content:"
+msgstr "내용:"
+
+#: blog/templates/blog/post_detail.html:17
+msgid "Writer:"
+msgstr "작성자:"
+
+#: blog/templates/blog/post_detail.html:18
+msgid "Date:"
+msgstr "날짜"
+
+#: blog/templates/blog/post_detail.html:32
+#: blog/templates/blog/post_detail.html:66 blog/templates/blog/post_form.html:9
+msgid "Submit"
+msgstr "제출"
+
+#: blog/templates/blog/post_detail.html:51
+msgid "There is no comment."
+msgstr "댓글이 없습니다."
+
+#: blog/templates/blog/post_detail.html:85
+msgid "There is no hashtag."
+msgstr "해시태그가 없습니다."
+
+#: blog/templates/blog/post_edit.html:9 templates/index.html:7
 msgid "Welcome!"
 msgstr "환영합니다!"
+
+#: templates/base.html:18
+msgid "Please, Login"
+msgstr "로그인 해주세요."
+
+#: templates/index.html:6
+msgid "Index page"
+msgstr "인덱스 페이지"
 
 #: venv/lib/python3.8/site-packages/django/contrib/messages/apps.py:15
 msgid "Messages"
@@ -595,10 +641,6 @@ msgstr[1] ""
 #: venv/lib/python3.8/site-packages/django/forms/formsets.py:484
 #: venv/lib/python3.8/site-packages/django/forms/formsets.py:491
 msgid "Order"
-msgstr ""
-
-#: venv/lib/python3.8/site-packages/django/forms/formsets.py:499
-msgid "Delete"
 msgstr ""
 
 #: venv/lib/python3.8/site-packages/django/forms/models.py:886
