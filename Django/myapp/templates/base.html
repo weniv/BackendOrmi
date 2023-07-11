@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         {% if user.is_authenticated %}
-            <p>{% trans 'Welcome,'} {{ user.email }}</p>
+            <p>{% trans 'Welcome,' %} {{ user.email }}</p>
             <a href="{% url 'user:logout' %}" class="btn">Logout</a>
         {% else %}
             <p>{% trans 'Please, Login' %}</p>

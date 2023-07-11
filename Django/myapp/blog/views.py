@@ -95,7 +95,11 @@ class DetailView(View):
         
         context = {
             "title": "Blog",
-            'post': post,
+            'post_id': pk,
+            'post_title': post.title,
+            'post_writer': post.writer,
+            'post_content': post.content,
+            'post_created_at': post.created_at,
             'comments': comments,
             'hashtags': hashtags,
             'comment_form': comment_form,
